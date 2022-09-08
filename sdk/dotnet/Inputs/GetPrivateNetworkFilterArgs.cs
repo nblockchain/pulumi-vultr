@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetPrivateNetworkFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetPrivateNetworkFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetPrivateNetworkFilterInputArgs()
         {
         }
+        public static new GetPrivateNetworkFilterInputArgs Empty => new GetPrivateNetworkFilterInputArgs();
     }
 }

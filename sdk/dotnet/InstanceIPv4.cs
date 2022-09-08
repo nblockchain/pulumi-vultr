@@ -18,32 +18,31 @@ namespace Pulumi.Vultr
     /// Create a new IPv4 address for a instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myInstance = new Vultr.Instance("myInstance", new()
     ///     {
-    ///         var myInstance = new Vultr.Instance("myInstance", new Vultr.InstanceArgs
-    ///         {
-    ///             EnableIpv6 = true,
-    ///             OsId = 167,
-    ///             Plan = "vc2-1c-1gb",
-    ///             Region = "ewr",
-    ///         });
-    ///         var myInstanceIpv4 = new Vultr.InstanceIPv4("myInstanceIpv4", new Vultr.InstanceIPv4Args
-    ///         {
-    ///             InstanceId = myInstance.Id,
-    ///             Reboot = false,
-    ///         });
-    ///     }
+    ///         EnableIpv6 = true,
+    ///         OsId = 167,
+    ///         Plan = "vc2-1c-1gb",
+    ///         Region = "ewr",
+    ///     });
     /// 
-    /// }
+    ///     var myInstanceIpv4 = new Vultr.InstanceIPv4("myInstanceIpv4", new()
+    ///     {
+    ///         InstanceId = myInstance.Id,
+    ///         Reboot = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/instanceIPv4:InstanceIPv4")]
-    public partial class InstanceIPv4 : Pulumi.CustomResource
+    public partial class InstanceIPv4 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The gateway IP address.
@@ -52,8 +51,7 @@ namespace Pulumi.Vultr
         public Output<string> Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the instance you want to set an IPv4
-        /// reverse DNS record for.
+        /// The ID of the instance to be assigned the IPv4 address.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -126,11 +124,10 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class InstanceIPv4Args : Pulumi.ResourceArgs
+    public sealed class InstanceIPv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the instance you want to set an IPv4
-        /// reverse DNS record for.
+        /// The ID of the instance to be assigned the IPv4 address.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -144,9 +141,10 @@ namespace Pulumi.Vultr
         public InstanceIPv4Args()
         {
         }
+        public static new InstanceIPv4Args Empty => new InstanceIPv4Args();
     }
 
-    public sealed class InstanceIPv4State : Pulumi.ResourceArgs
+    public sealed class InstanceIPv4State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The gateway IP address.
@@ -155,8 +153,7 @@ namespace Pulumi.Vultr
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// The ID of the instance you want to set an IPv4
-        /// reverse DNS record for.
+        /// The ID of the instance to be assigned the IPv4 address.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -188,5 +185,6 @@ namespace Pulumi.Vultr
         public InstanceIPv4State()
         {
         }
+        public static new InstanceIPv4State Empty => new InstanceIPv4State();
     }
 }

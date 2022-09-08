@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a ISO file by `filename`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myIso = Vultr.GetIsoPrivate.Invoke(new()
         ///     {
-        ///         var myIso = Output.Create(Vultr.GetIsoPrivate.InvokeAsync(new Vultr.GetIsoPrivateArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetIsoPrivateFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetIsoPrivateFilterArgs
+        ///                 Name = "filename",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "filename",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-iso-filename",
-        ///                     },
+        ///                     "my-iso-filename",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIsoPrivateResult> InvokeAsync(GetIsoPrivateArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIsoPrivateResult>("vultr:index/getIsoPrivate:getIsoPrivate", args ?? new GetIsoPrivateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIsoPrivateResult>("vultr:index/getIsoPrivate:getIsoPrivate", args ?? new GetIsoPrivateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about an ISO file uploaded to your Vultr account.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a ISO file by `filename`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myIso = Vultr.GetIsoPrivate.Invoke(new()
         ///     {
-        ///         var myIso = Output.Create(Vultr.GetIsoPrivate.InvokeAsync(new Vultr.GetIsoPrivateArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetIsoPrivateFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetIsoPrivateFilterArgs
+        ///                 Name = "filename",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "filename",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-iso-filename",
-        ///                     },
+        ///                     "my-iso-filename",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIsoPrivateResult> Invoke(GetIsoPrivateInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIsoPrivateResult>("vultr:index/getIsoPrivate:getIsoPrivate", args ?? new GetIsoPrivateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIsoPrivateResult>("vultr:index/getIsoPrivate:getIsoPrivate", args ?? new GetIsoPrivateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIsoPrivateArgs : Pulumi.InvokeArgs
+    public sealed class GetIsoPrivateArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetIsoPrivateFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetIsoPrivateArgs()
         {
         }
+        public static new GetIsoPrivateArgs Empty => new GetIsoPrivateArgs();
     }
 
-    public sealed class GetIsoPrivateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIsoPrivateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetIsoPrivateFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetIsoPrivateInvokeArgs()
         {
         }
+        public static new GetIsoPrivateInvokeArgs Empty => new GetIsoPrivateInvokeArgs();
     }
 
 

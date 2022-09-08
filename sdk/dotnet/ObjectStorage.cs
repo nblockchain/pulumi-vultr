@@ -17,21 +17,19 @@ namespace Pulumi.Vultr
     /// Create a new object storage subscription.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tf = new Vultr.ObjectStorage("tf", new()
     ///     {
-    ///         var tf = new Vultr.ObjectStorage("tf", new Vultr.ObjectStorageArgs
-    ///         {
-    ///             ClusterId = 2,
-    ///             Label = "tf-label",
-    ///         });
-    ///     }
+    ///         ClusterId = 2,
+    ///         Label = "tf-label",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/objectStorage:ObjectStorage")]
-    public partial class ObjectStorage : Pulumi.CustomResource
+    public partial class ObjectStorage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The region ID that you want the network to be created in.
@@ -143,7 +141,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class ObjectStorageArgs : Pulumi.ResourceArgs
+    public sealed class ObjectStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region ID that you want the network to be created in.
@@ -160,9 +158,10 @@ namespace Pulumi.Vultr
         public ObjectStorageArgs()
         {
         }
+        public static new ObjectStorageArgs Empty => new ObjectStorageArgs();
     }
 
-    public sealed class ObjectStorageState : Pulumi.ResourceArgs
+    public sealed class ObjectStorageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region ID that you want the network to be created in.
@@ -221,5 +220,6 @@ namespace Pulumi.Vultr
         public ObjectStorageState()
         {
         }
+        public static new ObjectStorageState Empty => new ObjectStorageState();
     }
 }

@@ -17,20 +17,18 @@ namespace Pulumi.Vultr
     /// Create an SSH key
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mySshKey = new Vultr.SshKey("mySshKey", new()
     ///     {
-    ///         var mySshKey = new Vultr.SshKey("mySshKey", new Vultr.SshKeyArgs
-    ///         {
-    ///             SshKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFNkHlefm1iMtPeqsIBp2t9cbGUf55xNDULz/bD/4BCV43yZ5lh0cUYuXALg9NI29ui7PEGReXjSpNwUD6ceN/78YOK41KAcecq+SS0bJ4b4amKZIJG3JWmDKljtv1dmSBCrTmEAQaOorxqGGBYmZS7NQumRe4lav5r6wOs8OACMANE1ejkeZsGFzJFNqvr5DuHdDL5FAudW23me3BDmrM9ifUzzjl1Jwku3bnRaCcjaxH8oTumt1a00mWci/1qUlaVFft085yvVq7KZbF2OPPbl+erDW91+EZ2FgEi+v1/CSJ5 your_username@hostname",
-    ///         });
-    ///     }
+    ///         Key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFNkHlefm1iMtPeqsIBp2t9cbGUf55xNDULz/bD/4BCV43yZ5lh0cUYuXALg9NI29ui7PEGReXjSpNwUD6ceN/78YOK41KAcecq+SS0bJ4b4amKZIJG3JWmDKljtv1dmSBCrTmEAQaOorxqGGBYmZS7NQumRe4lav5r6wOs8OACMANE1ejkeZsGFzJFNqvr5DuHdDL5FAudW23me3BDmrM9ifUzzjl1Jwku3bnRaCcjaxH8oTumt1a00mWci/1qUlaVFft085yvVq7KZbF2OPPbl+erDW91+EZ2FgEi+v1/CSJ5 your_username@hostname",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/sshKey:SshKey")]
-    public partial class SshKey : Pulumi.CustomResource
+    public partial class SshKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date the SSH key was added to your Vultr account.
@@ -106,7 +104,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class SshKeyArgs : Pulumi.ResourceArgs
+    public sealed class SshKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name/label of the SSH key.
@@ -123,9 +121,10 @@ namespace Pulumi.Vultr
         public SshKeyArgs()
         {
         }
+        public static new SshKeyArgs Empty => new SshKeyArgs();
     }
 
-    public sealed class SshKeyState : Pulumi.ResourceArgs
+    public sealed class SshKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the SSH key was added to your Vultr account.
@@ -148,5 +147,6 @@ namespace Pulumi.Vultr
         public SshKeyState()
         {
         }
+        public static new SshKeyState Empty => new SshKeyState();
     }
 }

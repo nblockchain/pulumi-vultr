@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a plan by `id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myPlan = Vultr.GetPlan.Invoke(new()
         ///     {
-        ///         var myPlan = Output.Create(Vultr.GetPlan.InvokeAsync(new Vultr.GetPlanArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetPlanFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetPlanFilterArgs
+        ///                 Name = "id",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "id",
-        ///                     Values = 
-        ///                     {
-        ///                         "vc2-1c-1gb",
-        ///                     },
+        ///                     "vc2-1c-1gb",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPlanResult> InvokeAsync(GetPlanArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPlanResult>("vultr:index/getPlan:getPlan", args ?? new GetPlanArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPlanResult>("vultr:index/getPlan:getPlan", args ?? new GetPlanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr plan.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a plan by `id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myPlan = Vultr.GetPlan.Invoke(new()
         ///     {
-        ///         var myPlan = Output.Create(Vultr.GetPlan.InvokeAsync(new Vultr.GetPlanArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetPlanFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetPlanFilterArgs
+        ///                 Name = "id",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "id",
-        ///                     Values = 
-        ///                     {
-        ///                         "vc2-1c-1gb",
-        ///                     },
+        ///                     "vc2-1c-1gb",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPlanResult> Invoke(GetPlanInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPlanResult>("vultr:index/getPlan:getPlan", args ?? new GetPlanInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPlanResult>("vultr:index/getPlan:getPlan", args ?? new GetPlanInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPlanArgs : Pulumi.InvokeArgs
+    public sealed class GetPlanArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetPlanFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetPlanArgs()
         {
         }
+        public static new GetPlanArgs Empty => new GetPlanArgs();
     }
 
-    public sealed class GetPlanInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPlanInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetPlanFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetPlanInvokeArgs()
         {
         }
+        public static new GetPlanInvokeArgs Empty => new GetPlanInvokeArgs();
     }
 
 
@@ -151,6 +148,14 @@ namespace Pulumi.Vultr
         /// </summary>
         public readonly int DiskCount;
         public readonly ImmutableArray<Outputs.GetPlanFilterResult> Filters;
+        /// <summary>
+        /// For GPU plans, the GPU card type.
+        /// </summary>
+        public readonly string GpuType;
+        /// <summary>
+        /// For GPU plans, the VRAM available in the plan.
+        /// </summary>
+        public readonly int GpuVram;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -183,6 +188,10 @@ namespace Pulumi.Vultr
 
             ImmutableArray<Outputs.GetPlanFilterResult> filters,
 
+            string gpuType,
+
+            int gpuVram,
+
             string id,
 
             ImmutableArray<string> locations,
@@ -199,6 +208,8 @@ namespace Pulumi.Vultr
             Disk = disk;
             DiskCount = diskCount;
             Filters = filters;
+            GpuType = gpuType;
+            GpuVram = gpuVram;
             Id = id;
             Locations = locations;
             MonthlyCost = monthlyCost;

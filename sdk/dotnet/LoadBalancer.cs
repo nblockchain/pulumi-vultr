@@ -17,42 +17,40 @@ namespace Pulumi.Vultr
     /// Create a new load balancer:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var lb = new Vultr.LoadBalancer("lb", new()
     ///     {
-    ///         var lb = new Vultr.LoadBalancer("lb", new Vultr.LoadBalancerArgs
+    ///         BalancingAlgorithm = "roundrobin",
+    ///         ForwardingRules = new[]
     ///         {
-    ///             BalancingAlgorithm = "roundrobin",
-    ///             ForwardingRules = 
+    ///             new Vultr.Inputs.LoadBalancerForwardingRuleArgs
     ///             {
-    ///                 new Vultr.Inputs.LoadBalancerForwardingRuleArgs
-    ///                 {
-    ///                     BackendPort = 81,
-    ///                     BackendProtocol = "http",
-    ///                     FrontendPort = 82,
-    ///                     FrontendProtocol = "http",
-    ///                 },
+    ///                 BackendPort = 81,
+    ///                 BackendProtocol = "http",
+    ///                 FrontendPort = 82,
+    ///                 FrontendProtocol = "http",
     ///             },
-    ///             HealthCheck = new Vultr.Inputs.LoadBalancerHealthCheckArgs
-    ///             {
-    ///                 CheckInterval = 3,
-    ///                 HealthyThreshold = 4,
-    ///                 Path = "/test",
-    ///                 Port = 8080,
-    ///                 Protocol = "http",
-    ///                 ResponseTimeout = 1,
-    ///                 UnhealthyThreshold = 2,
-    ///             },
-    ///             Label = "terraform lb example",
-    ///             Region = "ewr",
-    ///         });
-    ///     }
+    ///         },
+    ///         HealthCheck = new Vultr.Inputs.LoadBalancerHealthCheckArgs
+    ///         {
+    ///             CheckInterval = 3,
+    ///             HealthyThreshold = 4,
+    ///             Path = "/test",
+    ///             Port = 8080,
+    ///             Protocol = "http",
+    ///             ResponseTimeout = 1,
+    ///             UnhealthyThreshold = 2,
+    ///         },
+    ///         Label = "terraform lb example",
+    ///         Region = "ewr",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +62,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/loadBalancer:LoadBalancer")]
-    public partial class LoadBalancer : Pulumi.CustomResource
+    public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Array of instances that are currently attached to the load balancer.
@@ -127,7 +125,7 @@ namespace Pulumi.Vultr
         public Output<string?> Label { get; private set; } = null!;
 
         /// <summary>
-        /// - A private network ID that the load balancer should be attached to.
+        /// A private network ID that the load balancer should be attached to.
         /// </summary>
         [Output("privateNetwork")]
         public Output<string?> PrivateNetwork { get; private set; } = null!;
@@ -161,6 +159,12 @@ namespace Pulumi.Vultr
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A VPC ID that the load balancer should be attached to.
+        /// </summary>
+        [Output("vpc")]
+        public Output<string?> Vpc { get; private set; } = null!;
 
 
         /// <summary>
@@ -206,7 +210,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class LoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         [Input("attachedInstances")]
         private InputList<string>? _attachedInstances;
@@ -269,7 +273,7 @@ namespace Pulumi.Vultr
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// - A private network ID that the load balancer should be attached to.
+        /// A private network ID that the load balancer should be attached to.
         /// </summary>
         [Input("privateNetwork")]
         public Input<string>? PrivateNetwork { get; set; }
@@ -298,12 +302,19 @@ namespace Pulumi.Vultr
         [Input("sslRedirect")]
         public Input<bool>? SslRedirect { get; set; }
 
+        /// <summary>
+        /// A VPC ID that the load balancer should be attached to.
+        /// </summary>
+        [Input("vpc")]
+        public Input<string>? Vpc { get; set; }
+
         public LoadBalancerArgs()
         {
         }
+        public static new LoadBalancerArgs Empty => new LoadBalancerArgs();
     }
 
-    public sealed class LoadBalancerState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         [Input("attachedInstances")]
         private InputList<string>? _attachedInstances;
@@ -384,7 +395,7 @@ namespace Pulumi.Vultr
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// - A private network ID that the load balancer should be attached to.
+        /// A private network ID that the load balancer should be attached to.
         /// </summary>
         [Input("privateNetwork")]
         public Input<string>? PrivateNetwork { get; set; }
@@ -419,8 +430,15 @@ namespace Pulumi.Vultr
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// A VPC ID that the load balancer should be attached to.
+        /// </summary>
+        [Input("vpc")]
+        public Input<string>? Vpc { get; set; }
+
         public LoadBalancerState()
         {
         }
+        public static new LoadBalancerState Empty => new LoadBalancerState();
     }
 }

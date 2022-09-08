@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a server by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myServer = Vultr.GetBareMetalServer.Invoke(new()
         ///     {
-        ///         var myServer = Output.Create(Vultr.GetBareMetalServer.InvokeAsync(new Vultr.GetBareMetalServerArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBareMetalServerFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBareMetalServerFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-server-label",
-        ///                     },
+        ///                     "my-server-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBareMetalServerResult> InvokeAsync(GetBareMetalServerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBareMetalServerResult>("vultr:index/getBareMetalServer:getBareMetalServer", args ?? new GetBareMetalServerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBareMetalServerResult>("vultr:index/getBareMetalServer:getBareMetalServer", args ?? new GetBareMetalServerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr bare metal server.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a server by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myServer = Vultr.GetBareMetalServer.Invoke(new()
         ///     {
-        ///         var myServer = Output.Create(Vultr.GetBareMetalServer.InvokeAsync(new Vultr.GetBareMetalServerArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBareMetalServerFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBareMetalServerFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-server-label",
-        ///                     },
+        ///                     "my-server-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBareMetalServerResult> Invoke(GetBareMetalServerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBareMetalServerResult>("vultr:index/getBareMetalServer:getBareMetalServer", args ?? new GetBareMetalServerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBareMetalServerResult>("vultr:index/getBareMetalServer:getBareMetalServer", args ?? new GetBareMetalServerInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBareMetalServerArgs : Pulumi.InvokeArgs
+    public sealed class GetBareMetalServerArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetBareMetalServerFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetBareMetalServerArgs()
         {
         }
+        public static new GetBareMetalServerArgs Empty => new GetBareMetalServerArgs();
     }
 
-    public sealed class GetBareMetalServerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBareMetalServerInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetBareMetalServerFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetBareMetalServerInvokeArgs()
         {
         }
+        public static new GetBareMetalServerInvokeArgs Empty => new GetBareMetalServerInvokeArgs();
     }
 
 
@@ -172,7 +169,7 @@ namespace Pulumi.Vultr
         /// The server's label.
         /// </summary>
         public readonly string Label;
-        public readonly string MacAddress;
+        public readonly int MacAddress;
         /// <summary>
         /// The server's main IP address.
         /// </summary>
@@ -209,6 +206,10 @@ namespace Pulumi.Vultr
         /// The server's tag.
         /// </summary>
         public readonly string Tag;
+        /// <summary>
+        /// A list of tags applied to the server.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
         public readonly string V6MainIp;
         public readonly string V6Network;
         public readonly int V6NetworkSize;
@@ -235,7 +236,7 @@ namespace Pulumi.Vultr
 
             string label,
 
-            string macAddress,
+            int macAddress,
 
             string mainIp,
 
@@ -254,6 +255,8 @@ namespace Pulumi.Vultr
             string status,
 
             string tag,
+
+            ImmutableArray<string> tags,
 
             string v6MainIp,
 
@@ -281,6 +284,7 @@ namespace Pulumi.Vultr
             Region = region;
             Status = status;
             Tag = tag;
+            Tags = tags;
             V6MainIp = v6MainIp;
             V6Network = v6Network;
             V6NetworkSize = v6NetworkSize;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr
 {
     [VultrResourceType("vultr:index/isoPrivate:IsoPrivate")]
-    public partial class IsoPrivate : Pulumi.CustomResource
+    public partial class IsoPrivate : global::Pulumi.CustomResource
     {
         [Output("dateCreated")]
         public Output<string> DateCreated { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class IsoPrivateArgs : Pulumi.ResourceArgs
+    public sealed class IsoPrivateArgs : global::Pulumi.ResourceArgs
     {
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -85,9 +85,10 @@ namespace Pulumi.Vultr
         public IsoPrivateArgs()
         {
         }
+        public static new IsoPrivateArgs Empty => new IsoPrivateArgs();
     }
 
-    public sealed class IsoPrivateState : Pulumi.ResourceArgs
+    public sealed class IsoPrivateState : global::Pulumi.ResourceArgs
     {
         [Input("dateCreated")]
         public Input<string>? DateCreated { get; set; }
@@ -113,5 +114,6 @@ namespace Pulumi.Vultr
         public IsoPrivateState()
         {
         }
+        public static new IsoPrivateState Empty => new IsoPrivateState();
     }
 }

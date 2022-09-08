@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a startup script by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myStartupScript = Vultr.GetStartupScript.Invoke(new()
         ///     {
-        ///         var myStartupScript = Output.Create(Vultr.GetStartupScript.InvokeAsync(new Vultr.GetStartupScriptArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetStartupScriptFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetStartupScriptFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-startup-script-name",
-        ///                     },
+        ///                     "my-startup-script-name",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStartupScriptResult> InvokeAsync(GetStartupScriptArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStartupScriptResult>("vultr:index/getStartupScript:getStartupScript", args ?? new GetStartupScriptArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStartupScriptResult>("vultr:index/getStartupScript:getStartupScript", args ?? new GetStartupScriptArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr startup script. This data source provides the name, script, type, creation date, and the last modification date for your Vultr startup script.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a startup script by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myStartupScript = Vultr.GetStartupScript.Invoke(new()
         ///     {
-        ///         var myStartupScript = Output.Create(Vultr.GetStartupScript.InvokeAsync(new Vultr.GetStartupScriptArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetStartupScriptFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetStartupScriptFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-startup-script-name",
-        ///                     },
+        ///                     "my-startup-script-name",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStartupScriptResult> Invoke(GetStartupScriptInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStartupScriptResult>("vultr:index/getStartupScript:getStartupScript", args ?? new GetStartupScriptInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStartupScriptResult>("vultr:index/getStartupScript:getStartupScript", args ?? new GetStartupScriptInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetStartupScriptArgs : Pulumi.InvokeArgs
+    public sealed class GetStartupScriptArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetStartupScriptFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetStartupScriptArgs()
         {
         }
+        public static new GetStartupScriptArgs Empty => new GetStartupScriptArgs();
     }
 
-    public sealed class GetStartupScriptInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStartupScriptInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetStartupScriptFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetStartupScriptInvokeArgs()
         {
         }
+        public static new GetStartupScriptInvokeArgs Empty => new GetStartupScriptInvokeArgs();
     }
 
 

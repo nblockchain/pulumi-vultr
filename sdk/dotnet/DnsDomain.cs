@@ -17,21 +17,19 @@ namespace Pulumi.Vultr
     /// Create a new DNS Domain
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myDomain = new Vultr.DnsDomain("myDomain", new()
     ///     {
-    ///         var myDomain = new Vultr.DnsDomain("myDomain", new Vultr.DnsDomainArgs
-    ///         {
-    ///             Domain = "domain.com",
-    ///             Ip = "66.42.94.227",
-    ///         });
-    ///     }
+    ///         Domain = "domain.com",
+    ///         Ip = "66.42.94.227",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/dnsDomain:DnsDomain")]
-    public partial class DnsDomain : Pulumi.CustomResource
+    public partial class DnsDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date the domain was added to your account.
@@ -113,7 +111,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class DnsDomainArgs : Pulumi.ResourceArgs
+    public sealed class DnsDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Domain's DNSSEC status. Valid options are `enabled` or `disabled`. Note `disabled` is default
@@ -136,9 +134,10 @@ namespace Pulumi.Vultr
         public DnsDomainArgs()
         {
         }
+        public static new DnsDomainArgs Empty => new DnsDomainArgs();
     }
 
-    public sealed class DnsDomainState : Pulumi.ResourceArgs
+    public sealed class DnsDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the domain was added to your account.
@@ -167,5 +166,6 @@ namespace Pulumi.Vultr
         public DnsDomainState()
         {
         }
+        public static new DnsDomainState Empty => new DnsDomainState();
     }
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a plan by `id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myPlan = Vultr.GetBareMetalPlan.Invoke(new()
         ///     {
-        ///         var myPlan = Output.Create(Vultr.GetBareMetalPlan.InvokeAsync(new Vultr.GetBareMetalPlanArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBareMetalPlanFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBareMetalPlanFilterArgs
+        ///                 Name = "id",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "id",
-        ///                     Values = 
-        ///                     {
-        ///                         "vbm-4c-32gb",
-        ///                     },
+        ///                     "vbm-4c-32gb",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBareMetalPlanResult> InvokeAsync(GetBareMetalPlanArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBareMetalPlanResult>("vultr:index/getBareMetalPlan:getBareMetalPlan", args ?? new GetBareMetalPlanArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBareMetalPlanResult>("vultr:index/getBareMetalPlan:getBareMetalPlan", args ?? new GetBareMetalPlanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr bare metal server plan.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a plan by `id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myPlan = Vultr.GetBareMetalPlan.Invoke(new()
         ///     {
-        ///         var myPlan = Output.Create(Vultr.GetBareMetalPlan.InvokeAsync(new Vultr.GetBareMetalPlanArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBareMetalPlanFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBareMetalPlanFilterArgs
+        ///                 Name = "id",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "id",
-        ///                     Values = 
-        ///                     {
-        ///                         "vbm-4c-32gb",
-        ///                     },
+        ///                     "vbm-4c-32gb",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBareMetalPlanResult> Invoke(GetBareMetalPlanInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBareMetalPlanResult>("vultr:index/getBareMetalPlan:getBareMetalPlan", args ?? new GetBareMetalPlanInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBareMetalPlanResult>("vultr:index/getBareMetalPlan:getBareMetalPlan", args ?? new GetBareMetalPlanInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBareMetalPlanArgs : Pulumi.InvokeArgs
+    public sealed class GetBareMetalPlanArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetBareMetalPlanFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetBareMetalPlanArgs()
         {
         }
+        public static new GetBareMetalPlanArgs Empty => new GetBareMetalPlanArgs();
     }
 
-    public sealed class GetBareMetalPlanInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBareMetalPlanInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetBareMetalPlanFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetBareMetalPlanInvokeArgs()
         {
         }
+        public static new GetBareMetalPlanInvokeArgs Empty => new GetBareMetalPlanInvokeArgs();
     }
 
 

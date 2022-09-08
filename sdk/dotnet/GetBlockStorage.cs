@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a block storage subscription by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myBlockStorage = Vultr.GetBlockStorage.Invoke(new()
         ///     {
-        ///         var myBlockStorage = Output.Create(Vultr.GetBlockStorage.InvokeAsync(new Vultr.GetBlockStorageArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBlockStorageFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBlockStorageFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-block-storage-label",
-        ///                     },
+        ///                     "my-block-storage-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBlockStorageResult> InvokeAsync(GetBlockStorageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBlockStorageResult>("vultr:index/getBlockStorage:getBlockStorage", args ?? new GetBlockStorageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBlockStorageResult>("vultr:index/getBlockStorage:getBlockStorage", args ?? new GetBlockStorageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr block storage subscription.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a block storage subscription by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myBlockStorage = Vultr.GetBlockStorage.Invoke(new()
         ///     {
-        ///         var myBlockStorage = Output.Create(Vultr.GetBlockStorage.InvokeAsync(new Vultr.GetBlockStorageArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBlockStorageFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBlockStorageFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-block-storage-label",
-        ///                     },
+        ///                     "my-block-storage-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBlockStorageResult> Invoke(GetBlockStorageInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBlockStorageResult>("vultr:index/getBlockStorage:getBlockStorage", args ?? new GetBlockStorageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBlockStorageResult>("vultr:index/getBlockStorage:getBlockStorage", args ?? new GetBlockStorageInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBlockStorageArgs : Pulumi.InvokeArgs
+    public sealed class GetBlockStorageArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetBlockStorageFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetBlockStorageArgs()
         {
         }
+        public static new GetBlockStorageArgs Empty => new GetBlockStorageArgs();
     }
 
-    public sealed class GetBlockStorageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBlockStorageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetBlockStorageFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetBlockStorageInvokeArgs()
         {
         }
+        public static new GetBlockStorageInvokeArgs Empty => new GetBlockStorageInvokeArgs();
     }
 
 
@@ -142,6 +139,10 @@ namespace Pulumi.Vultr
         /// The ID of the VPS the block storage subscription is attached to.
         /// </summary>
         public readonly string AttachedToInstance;
+        /// <summary>
+        /// The type of block storage volume.
+        /// </summary>
+        public readonly string BlockType;
         /// <summary>
         /// The cost per month of the block storage subscription in USD.
         /// </summary>
@@ -180,6 +181,8 @@ namespace Pulumi.Vultr
         private GetBlockStorageResult(
             string attachedToInstance,
 
+            string blockType,
+
             int cost,
 
             string dateCreated,
@@ -199,6 +202,7 @@ namespace Pulumi.Vultr
             string status)
         {
             AttachedToInstance = attachedToInstance;
+            BlockType = blockType;
             Cost = cost;
             DateCreated = dateCreated;
             Filters = filters;

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a reserved IP by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myReservedIp = Vultr.GetReservedIp.Invoke(new()
         ///     {
-        ///         var myReservedIp = Output.Create(Vultr.GetReservedIp.InvokeAsync(new Vultr.GetReservedIpArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetReservedIpFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetReservedIpFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-reserved-ip-label",
-        ///                     },
+        ///                     "my-reserved-ip-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReservedIpResult> InvokeAsync(GetReservedIpArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("vultr:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("vultr:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr reserved IP address.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a reserved IP by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myReservedIp = Vultr.GetReservedIp.Invoke(new()
         ///     {
-        ///         var myReservedIp = Output.Create(Vultr.GetReservedIp.InvokeAsync(new Vultr.GetReservedIpArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetReservedIpFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetReservedIpFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-reserved-ip-label",
-        ///                     },
+        ///                     "my-reserved-ip-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReservedIpResult> Invoke(GetReservedIpInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("vultr:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("vultr:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetReservedIpArgs : Pulumi.InvokeArgs
+    public sealed class GetReservedIpArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetReservedIpFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetReservedIpArgs()
         {
         }
+        public static new GetReservedIpArgs Empty => new GetReservedIpArgs();
     }
 
-    public sealed class GetReservedIpInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReservedIpInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetReservedIpFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetReservedIpInvokeArgs()
         {
         }
+        public static new GetReservedIpInvokeArgs Empty => new GetReservedIpInvokeArgs();
     }
 
 

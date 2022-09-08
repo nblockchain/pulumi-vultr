@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for an application by `deploy_name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var docker = Vultr.GetApplication.Invoke(new()
         ///     {
-        ///         var docker = Output.Create(Vultr.GetApplication.InvokeAsync(new Vultr.GetApplicationArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetApplicationFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetApplicationFilterArgs
+        ///                 Name = "deploy_name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "deploy_name",
-        ///                     Values = 
-        ///                     {
-        ///                         "Docker on CentOS 7 x64",
-        ///                     },
+        ///                     "Docker on CentOS 7 x64",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("vultr:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("vultr:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about applications that can be launched when creating a Vultr VPS.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for an application by `deploy_name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var docker = Vultr.GetApplication.Invoke(new()
         ///     {
-        ///         var docker = Output.Create(Vultr.GetApplication.InvokeAsync(new Vultr.GetApplicationArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetApplicationFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetApplicationFilterArgs
+        ///                 Name = "deploy_name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "deploy_name",
-        ///                     Values = 
-        ///                     {
-        ///                         "Docker on CentOS 7 x64",
-        ///                     },
+        ///                     "Docker on CentOS 7 x64",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("vultr:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("vultr:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetApplicationArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetApplicationFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetApplicationArgs()
         {
         }
+        public static new GetApplicationArgs Empty => new GetApplicationArgs();
     }
 
-    public sealed class GetApplicationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetApplicationFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetApplicationInvokeArgs()
         {
         }
+        public static new GetApplicationInvokeArgs Empty => new GetApplicationInvokeArgs();
     }
 
 

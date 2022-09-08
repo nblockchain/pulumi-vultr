@@ -17,28 +17,27 @@ namespace Pulumi.Vultr
     /// Create a new Snapshot
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myInstance = new Vultr.Instance("myInstance", new()
     ///     {
-    ///         var myInstance = new Vultr.Instance("myInstance", new Vultr.InstanceArgs
-    ///         {
-    ///             Label = "my_instance",
-    ///             OsId = 167,
-    ///             Plan = "201",
-    ///             Region = "ewr",
-    ///         });
-    ///         var mySnapshot = new Vultr.Snapshot("mySnapshot", new Vultr.SnapshotArgs
-    ///         {
-    ///             Description = "my instances snapshot",
-    ///             InstanceId = myInstance.Id,
-    ///         });
-    ///     }
+    ///         Label = "my_instance",
+    ///         OsId = 167,
+    ///         Plan = "201",
+    ///         Region = "ewr",
+    ///     });
     /// 
-    /// }
+    ///     var mySnapshot = new Vultr.Snapshot("mySnapshot", new()
+    ///     {
+    ///         Description = "my instances snapshot",
+    ///         InstanceId = myInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +49,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The app id which the snapshot is associated with.
@@ -138,7 +137,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description for the given snapshot.
@@ -155,9 +154,10 @@ namespace Pulumi.Vultr
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The app id which the snapshot is associated with.
@@ -204,5 +204,6 @@ namespace Pulumi.Vultr
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

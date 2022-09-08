@@ -17,62 +17,65 @@ namespace Pulumi.Vultr
     /// Create a new instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myInstance = new Vultr.Instance("myInstance", new()
     ///     {
-    ///         var myInstance = new Vultr.Instance("myInstance", new Vultr.InstanceArgs
-    ///         {
-    ///             OsId = 167,
-    ///             Plan = "vc2-1c-1gb",
-    ///             Region = "sea",
-    ///         });
-    ///     }
+    ///         OsId = 167,
+    ///         Plan = "vc2-1c-1gb",
+    ///         Region = "sea",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a new instance with options:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myInstance = new Vultr.Instance("myInstance", new()
     ///     {
-    ///         var myInstance = new Vultr.Instance("myInstance", new Vultr.InstanceArgs
+    ///         ActivationEmail = false,
+    ///         Backups = "enabled",
+    ///         BackupsSchedule = new Vultr.Inputs.InstanceBackupsScheduleArgs
     ///         {
-    ///             ActivationEmail = false,
-    ///             Backups = "enabled",
-    ///             DdosProtection = true,
-    ///             EnableIpv6 = true,
-    ///             Hostname = "my-instance-hostname",
-    ///             Label = "my-instance-label",
-    ///             OsId = 167,
-    ///             Plan = "vc2-1c-1gb",
-    ///             Region = "sea",
-    ///             Tag = "my-instance-tag",
-    ///         });
-    ///     }
+    ///             Type = "daily",
+    ///         },
+    ///         DdosProtection = true,
+    ///         EnableIpv6 = true,
+    ///         Hostname = "my-instance-hostname",
+    ///         Label = "my-instance-label",
+    ///         OsId = 167,
+    ///         Plan = "vc2-1c-1gb",
+    ///         Region = "sea",
+    ///         Tags = new[]
+    ///         {
+    ///             "my-instance-tag",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Servers can be imported using the server `ID`, e.g.
+    /// Instances can be imported using the instance `ID`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import vultr:index/instance:Instance my_server b6a859c5-b299-49dd-8888-b1abbc517d08
+    ///  $ pulumi import vultr:index/instance:Instance my_instance b6a859c5-b299-49dd-8888-b1abbc517d08
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether an activation email will be sent when the server is ready.
@@ -133,12 +136,6 @@ namespace Pulumi.Vultr
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether the server has private networking support enabled.
-        /// </summary>
-        [Output("enablePrivateNetwork")]
-        public Output<bool?> EnablePrivateNetwork { get; private set; } = null!;
 
         /// <summary>
         /// Array of which features are enabled.
@@ -231,7 +228,7 @@ namespace Pulumi.Vultr
         public Output<string> PowerStatus { get; private set; } = null!;
 
         /// <summary>
-        /// A list of private network IDs to be attached to the server.
+        /// (Deprecated: use `vpc_ids` instead) A list of private network IDs to be attached to the server.
         /// </summary>
         [Output("privateNetworkIds")]
         public Output<ImmutableArray<string>> PrivateNetworkIds { get; private set; } = null!;
@@ -285,10 +282,16 @@ namespace Pulumi.Vultr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag to assign to the server.
+        /// (Optional) The tag to assign to the server.
         /// </summary>
         [Output("tag")]
-        public Output<string> Tag { get; private set; } = null!;
+        public Output<string?> Tag { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of tags to apply to the instance.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.
@@ -319,6 +322,12 @@ namespace Pulumi.Vultr
         /// </summary>
         [Output("vcpuCount")]
         public Output<int> VcpuCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of VPC IDs to be attached to the server.
+        /// </summary>
+        [Output("vpcIds")]
+        public Output<ImmutableArray<string>> VpcIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -364,7 +373,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether an activation email will be sent when the server is ready.
@@ -401,12 +410,6 @@ namespace Pulumi.Vultr
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
-
-        /// <summary>
-        /// Whether the server has private networking support enabled.
-        /// </summary>
-        [Input("enablePrivateNetwork")]
-        public Input<bool>? EnablePrivateNetwork { get; set; }
 
         /// <summary>
         /// The ID of the firewall group to assign to the server.
@@ -454,8 +457,9 @@ namespace Pulumi.Vultr
         private InputList<string>? _privateNetworkIds;
 
         /// <summary>
-        /// A list of private network IDs to be attached to the server.
+        /// (Deprecated: use `vpc_ids` instead) A list of private network IDs to be attached to the server.
         /// </summary>
+        [Obsolete(@"private_network_ids has been deprecated and should no longer be used. Instead, use vpc_ids")]
         public InputList<string> PrivateNetworkIds
         {
             get => _privateNetworkIds ?? (_privateNetworkIds = new InputList<string>());
@@ -499,10 +503,22 @@ namespace Pulumi.Vultr
         }
 
         /// <summary>
-        /// The tag to assign to the server.
+        /// (Optional) The tag to assign to the server.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tags to apply to the instance.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.
@@ -510,12 +526,25 @@ namespace Pulumi.Vultr
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        [Input("vpcIds")]
+        private InputList<string>? _vpcIds;
+
+        /// <summary>
+        /// A list of VPC IDs to be attached to the server.
+        /// </summary>
+        public InputList<string> VpcIds
+        {
+            get => _vpcIds ?? (_vpcIds = new InputList<string>());
+            set => _vpcIds = value;
+        }
+
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether an activation email will be sent when the server is ready.
@@ -576,12 +605,6 @@ namespace Pulumi.Vultr
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
-
-        /// <summary>
-        /// Whether the server has private networking support enabled.
-        /// </summary>
-        [Input("enablePrivateNetwork")]
-        public Input<bool>? EnablePrivateNetwork { get; set; }
 
         [Input("features")]
         private InputList<string>? _features;
@@ -683,8 +706,9 @@ namespace Pulumi.Vultr
         private InputList<string>? _privateNetworkIds;
 
         /// <summary>
-        /// A list of private network IDs to be attached to the server.
+        /// (Deprecated: use `vpc_ids` instead) A list of private network IDs to be attached to the server.
         /// </summary>
+        [Obsolete(@"private_network_ids has been deprecated and should no longer be used. Instead, use vpc_ids")]
         public InputList<string> PrivateNetworkIds
         {
             get => _privateNetworkIds ?? (_privateNetworkIds = new InputList<string>());
@@ -746,10 +770,22 @@ namespace Pulumi.Vultr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The tag to assign to the server.
+        /// (Optional) The tag to assign to the server.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tags to apply to the instance.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.
@@ -781,8 +817,21 @@ namespace Pulumi.Vultr
         [Input("vcpuCount")]
         public Input<int>? VcpuCount { get; set; }
 
+        [Input("vpcIds")]
+        private InputList<string>? _vpcIds;
+
+        /// <summary>
+        /// A list of VPC IDs to be attached to the server.
+        /// </summary>
+        public InputList<string> VpcIds
+        {
+            get => _vpcIds ?? (_vpcIds = new InputList<string>());
+            set => _vpcIds = value;
+        }
+
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

@@ -17,20 +17,18 @@ namespace Pulumi.Vultr
     /// Create a new Startup Script
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myScript = new Vultr.StartupScript("myScript", new()
     ///     {
-    ///         var myScript = new Vultr.StartupScript("myScript", new Vultr.StartupScriptArgs
-    ///         {
-    ///             Script = "echo $PATH",
-    ///         });
-    ///     }
+    ///         Script = "echo $PATH",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/startupScript:StartupScript")]
-    public partial class StartupScript : Pulumi.CustomResource
+    public partial class StartupScript : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Date the script was created.
@@ -118,7 +116,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class StartupScriptArgs : Pulumi.ResourceArgs
+    public sealed class StartupScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the given script.
@@ -141,9 +139,10 @@ namespace Pulumi.Vultr
         public StartupScriptArgs()
         {
         }
+        public static new StartupScriptArgs Empty => new StartupScriptArgs();
     }
 
-    public sealed class StartupScriptState : Pulumi.ResourceArgs
+    public sealed class StartupScriptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Date the script was created.
@@ -178,5 +177,6 @@ namespace Pulumi.Vultr
         public StartupScriptState()
         {
         }
+        public static new StartupScriptState Empty => new StartupScriptState();
     }
 }

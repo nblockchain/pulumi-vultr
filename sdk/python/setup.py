@@ -45,16 +45,17 @@ setup(name='pulumi_vultr',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi vultr',
-      url='https://pulumi.io',
+      keywords='pulumi vultr category/cloud',
+      url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/vincentbernat/pulumi-vultr'
+          'Repository': 'https://github.com/aarani/pulumi-vultr'
       },
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
           'pulumi_vultr': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

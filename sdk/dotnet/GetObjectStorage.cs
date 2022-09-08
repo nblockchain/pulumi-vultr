@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for an object storage subscription by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var s3 = Vultr.GetObjectStorage.Invoke(new()
         ///     {
-        ///         var s3 = Output.Create(Vultr.GetObjectStorage.InvokeAsync(new Vultr.GetObjectStorageArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetObjectStorageFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetObjectStorageFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-s3",
-        ///                     },
+        ///                     "my-s3",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetObjectStorageResult> InvokeAsync(GetObjectStorageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageResult>("vultr:index/getObjectStorage:getObjectStorage", args ?? new GetObjectStorageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageResult>("vultr:index/getObjectStorage:getObjectStorage", args ?? new GetObjectStorageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about an Object Storage subscription on Vultr.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for an object storage subscription by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var s3 = Vultr.GetObjectStorage.Invoke(new()
         ///     {
-        ///         var s3 = Output.Create(Vultr.GetObjectStorage.InvokeAsync(new Vultr.GetObjectStorageArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetObjectStorageFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetObjectStorageFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-s3",
-        ///                     },
+        ///                     "my-s3",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetObjectStorageResult> Invoke(GetObjectStorageInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetObjectStorageResult>("vultr:index/getObjectStorage:getObjectStorage", args ?? new GetObjectStorageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetObjectStorageResult>("vultr:index/getObjectStorage:getObjectStorage", args ?? new GetObjectStorageInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetObjectStorageArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectStorageArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetObjectStorageFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetObjectStorageArgs()
         {
         }
+        public static new GetObjectStorageArgs Empty => new GetObjectStorageArgs();
     }
 
-    public sealed class GetObjectStorageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectStorageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetObjectStorageFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetObjectStorageInvokeArgs()
         {
         }
+        public static new GetObjectStorageInvokeArgs Empty => new GetObjectStorageInvokeArgs();
     }
 
 

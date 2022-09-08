@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class LoadBalancerHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time in seconds to perform health check. Default value is 15.
@@ -57,5 +57,6 @@ namespace Pulumi.Vultr.Inputs
         public LoadBalancerHealthCheckArgs()
         {
         }
+        public static new LoadBalancerHealthCheckArgs Empty => new LoadBalancerHealthCheckArgs();
     }
 }

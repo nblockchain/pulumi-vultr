@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class LoadBalancerFirewallRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerFirewallRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The load balancer ID.
@@ -39,5 +39,6 @@ namespace Pulumi.Vultr.Inputs
         public LoadBalancerFirewallRuleGetArgs()
         {
         }
+        public static new LoadBalancerFirewallRuleGetArgs Empty => new LoadBalancerFirewallRuleGetArgs();
     }
 }

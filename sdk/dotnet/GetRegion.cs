@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a region by `id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myRegion = Vultr.GetRegion.Invoke(new()
         ///     {
-        ///         var myRegion = Output.Create(Vultr.GetRegion.InvokeAsync(new Vultr.GetRegionArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetRegionFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetRegionFilterArgs
+        ///                 Name = "id",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "id",
-        ///                     Values = 
-        ///                     {
-        ///                         "sea",
-        ///                     },
+        ///                     "sea",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("vultr:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("vultr:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr region.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a region by `id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myRegion = Vultr.GetRegion.Invoke(new()
         ///     {
-        ///         var myRegion = Output.Create(Vultr.GetRegion.InvokeAsync(new Vultr.GetRegionArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetRegionFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetRegionFilterArgs
+        ///                 Name = "id",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "id",
-        ///                     Values = 
-        ///                     {
-        ///                         "sea",
-        ///                     },
+        ///                     "sea",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionResult> Invoke(GetRegionInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionResult>("vultr:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionResult>("vultr:index/getRegion:getRegion", args ?? new GetRegionInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegionArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetRegionFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetRegionArgs()
         {
         }
+        public static new GetRegionArgs Empty => new GetRegionArgs();
     }
 
-    public sealed class GetRegionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetRegionFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetRegionInvokeArgs()
         {
         }
+        public static new GetRegionInvokeArgs Empty => new GetRegionInvokeArgs();
     }
 
 

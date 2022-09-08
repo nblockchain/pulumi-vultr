@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetUserFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetUserFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetUserFilterInputArgs()
         {
         }
+        public static new GetUserFilterInputArgs Empty => new GetUserFilterInputArgs();
     }
 }

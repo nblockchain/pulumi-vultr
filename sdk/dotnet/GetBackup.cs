@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a backup by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myBackup = Vultr.GetBackup.Invoke(new()
         ///     {
-        ///         var myBackup = Output.Create(Vultr.GetBackup.InvokeAsync(new Vultr.GetBackupArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBackupFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBackupFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-backup-description",
-        ///                     },
+        ///                     "my-backup-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("vultr:index/getBackup:getBackup", args ?? new GetBackupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("vultr:index/getBackup:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr backup. This data source provides a list of backups which contain the description, size, status, and the creation date for your Vultr backup.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a backup by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myBackup = Vultr.GetBackup.Invoke(new()
         ///     {
-        ///         var myBackup = Output.Create(Vultr.GetBackup.InvokeAsync(new Vultr.GetBackupArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetBackupFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetBackupFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-backup-description",
-        ///                     },
+        ///                     "my-backup-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("vultr:index/getBackup:getBackup", args ?? new GetBackupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("vultr:index/getBackup:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBackupArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetBackupFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetBackupArgs()
         {
         }
+        public static new GetBackupArgs Empty => new GetBackupArgs();
     }
 
-    public sealed class GetBackupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetBackupFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetBackupInvokeArgs()
         {
         }
+        public static new GetBackupInvokeArgs Empty => new GetBackupInvokeArgs();
     }
 
 
