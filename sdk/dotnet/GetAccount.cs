@@ -21,23 +21,21 @@ namespace Pulumi.Vultr
         /// Get the information for an account:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myAccount = Output.Create(Vultr.GetAccount.InvokeAsync());
-        ///     }
+        ///     var myAccount = Vultr.GetAccount.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("vultr:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("vultr:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

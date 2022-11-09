@@ -19,33 +19,32 @@ namespace Pulumi.Vultr
     /// Create a new reverse DNS record for an IPv4 address:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myInstance = new Vultr.Instance("myInstance", new()
     ///     {
-    ///         var myInstance = new Vultr.Instance("myInstance", new Vultr.InstanceArgs
-    ///         {
-    ///             EnableIpv6 = true,
-    ///             OsId = 167,
-    ///             Plan = "vc2-1c-1gb",
-    ///             Region = "ewr",
-    ///         });
-    ///         var myReverseIpv4 = new Vultr.ReverseIpv4("myReverseIpv4", new Vultr.ReverseIpv4Args
-    ///         {
-    ///             InstanceId = myInstance.Id,
-    ///             Ip = myInstance.MainIp,
-    ///             Reverse = "host.example.com",
-    ///         });
-    ///     }
+    ///         EnableIpv6 = true,
+    ///         OsId = 167,
+    ///         Plan = "vc2-1c-1gb",
+    ///         Region = "ewr",
+    ///     });
     /// 
-    /// }
+    ///     var myReverseIpv4 = new Vultr.ReverseIpv4("myReverseIpv4", new()
+    ///     {
+    ///         InstanceId = myInstance.Id,
+    ///         Ip = myInstance.MainIp,
+    ///         Reverse = "host.example.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/reverseIpv4:ReverseIpv4")]
-    public partial class ReverseIpv4 : Pulumi.CustomResource
+    public partial class ReverseIpv4 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The gateway IP address.
@@ -122,7 +121,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class ReverseIpv4Args : Pulumi.ResourceArgs
+    public sealed class ReverseIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the instance you want to set an IPv4
@@ -146,9 +145,10 @@ namespace Pulumi.Vultr
         public ReverseIpv4Args()
         {
         }
+        public static new ReverseIpv4Args Empty => new ReverseIpv4Args();
     }
 
-    public sealed class ReverseIpv4State : Pulumi.ResourceArgs
+    public sealed class ReverseIpv4State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The gateway IP address.
@@ -184,5 +184,6 @@ namespace Pulumi.Vultr
         public ReverseIpv4State()
         {
         }
+        public static new ReverseIpv4State Empty => new ReverseIpv4State();
     }
 }

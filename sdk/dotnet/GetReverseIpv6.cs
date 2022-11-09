@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for an IPv6 reverse DNS record by `reverse`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myReverseIpv6 = Vultr.GetReverseIpv6.Invoke(new()
         ///     {
-        ///         var myReverseIpv6 = Output.Create(Vultr.GetReverseIpv6.InvokeAsync(new Vultr.GetReverseIpv6Args
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetReverseIpv6FilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetReverseIpv6FilterArgs
+        ///                 Name = "reverse",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "reverse",
-        ///                     Values = 
-        ///                     {
-        ///                         "host.example.com",
-        ///                     },
+        ///                     "host.example.com",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReverseIpv6Result> InvokeAsync(GetReverseIpv6Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReverseIpv6Result>("vultr:index/getReverseIpv6:getReverseIpv6", args ?? new GetReverseIpv6Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReverseIpv6Result>("vultr:index/getReverseIpv6:getReverseIpv6", args ?? new GetReverseIpv6Args(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr Reverse IPv6.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for an IPv6 reverse DNS record by `reverse`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myReverseIpv6 = Vultr.GetReverseIpv6.Invoke(new()
         ///     {
-        ///         var myReverseIpv6 = Output.Create(Vultr.GetReverseIpv6.InvokeAsync(new Vultr.GetReverseIpv6Args
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetReverseIpv6FilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetReverseIpv6FilterArgs
+        ///                 Name = "reverse",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "reverse",
-        ///                     Values = 
-        ///                     {
-        ///                         "host.example.com",
-        ///                     },
+        ///                     "host.example.com",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReverseIpv6Result> Invoke(GetReverseIpv6InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReverseIpv6Result>("vultr:index/getReverseIpv6:getReverseIpv6", args ?? new GetReverseIpv6InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReverseIpv6Result>("vultr:index/getReverseIpv6:getReverseIpv6", args ?? new GetReverseIpv6InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetReverseIpv6Args : Pulumi.InvokeArgs
+    public sealed class GetReverseIpv6Args : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetReverseIpv6FilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetReverseIpv6Args()
         {
         }
+        public static new GetReverseIpv6Args Empty => new GetReverseIpv6Args();
     }
 
-    public sealed class GetReverseIpv6InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReverseIpv6InvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetReverseIpv6FilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetReverseIpv6InvokeArgs()
         {
         }
+        public static new GetReverseIpv6InvokeArgs Empty => new GetReverseIpv6InvokeArgs();
     }
 
 

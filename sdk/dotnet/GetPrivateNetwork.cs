@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a private network by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myNetwork = Vultr.GetPrivateNetwork.Invoke(new()
         ///     {
-        ///         var myNetwork = Output.Create(Vultr.GetPrivateNetwork.InvokeAsync(new Vultr.GetPrivateNetworkArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetPrivateNetworkFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetPrivateNetworkFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-network-description",
-        ///                     },
+        ///                     "my-network-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateNetworkResult> InvokeAsync(GetPrivateNetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateNetworkResult>("vultr:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateNetworkResult>("vultr:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr private network.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a private network by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myNetwork = Vultr.GetPrivateNetwork.Invoke(new()
         ///     {
-        ///         var myNetwork = Output.Create(Vultr.GetPrivateNetwork.InvokeAsync(new Vultr.GetPrivateNetworkArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetPrivateNetworkFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetPrivateNetworkFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-network-description",
-        ///                     },
+        ///                     "my-network-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateNetworkResult> Invoke(GetPrivateNetworkInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrivateNetworkResult>("vultr:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPrivateNetworkResult>("vultr:index/getPrivateNetwork:getPrivateNetwork", args ?? new GetPrivateNetworkInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPrivateNetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetPrivateNetworkArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetPrivateNetworkFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetPrivateNetworkArgs()
         {
         }
+        public static new GetPrivateNetworkArgs Empty => new GetPrivateNetworkArgs();
     }
 
-    public sealed class GetPrivateNetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPrivateNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetPrivateNetworkFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetPrivateNetworkInvokeArgs()
         {
         }
+        public static new GetPrivateNetworkInvokeArgs Empty => new GetPrivateNetworkInvokeArgs();
     }
 
 

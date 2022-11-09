@@ -16,7 +16,7 @@ namespace Pulumi.Vultr
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [VultrResourceType("pulumi:providers:vultr")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// The API Key that allows interaction with the API
@@ -50,7 +50,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API Key that allows interaction with the API
@@ -73,5 +73,6 @@ namespace Pulumi.Vultr
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a firewall group by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myFwg = Vultr.GetFirewallGroup.Invoke(new()
         ///     {
-        ///         var myFwg = Output.Create(Vultr.GetFirewallGroup.InvokeAsync(new Vultr.GetFirewallGroupArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetFirewallGroupFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetFirewallGroupFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "fwg-description",
-        ///                     },
+        ///                     "fwg-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFirewallGroupResult> InvokeAsync(GetFirewallGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallGroupResult>("vultr:index/getFirewallGroup:getFirewallGroup", args ?? new GetFirewallGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallGroupResult>("vultr:index/getFirewallGroup:getFirewallGroup", args ?? new GetFirewallGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a firewall group on your Vultr account.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a firewall group by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myFwg = Vultr.GetFirewallGroup.Invoke(new()
         ///     {
-        ///         var myFwg = Output.Create(Vultr.GetFirewallGroup.InvokeAsync(new Vultr.GetFirewallGroupArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetFirewallGroupFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetFirewallGroupFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "fwg-description",
-        ///                     },
+        ///                     "fwg-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFirewallGroupResult> Invoke(GetFirewallGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFirewallGroupResult>("vultr:index/getFirewallGroup:getFirewallGroup", args ?? new GetFirewallGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFirewallGroupResult>("vultr:index/getFirewallGroup:getFirewallGroup", args ?? new GetFirewallGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFirewallGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetFirewallGroupFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetFirewallGroupArgs()
         {
         }
+        public static new GetFirewallGroupArgs Empty => new GetFirewallGroupArgs();
     }
 
-    public sealed class GetFirewallGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetFirewallGroupFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetFirewallGroupInvokeArgs()
         {
         }
+        public static new GetFirewallGroupInvokeArgs Empty => new GetFirewallGroupInvokeArgs();
     }
 
 

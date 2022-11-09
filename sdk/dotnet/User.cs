@@ -17,54 +17,50 @@ namespace Pulumi.Vultr
     /// Create a new User without any ACLs
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myUser = new Vultr.User("myUser", new()
     ///     {
-    ///         var myUser = new Vultr.User("myUser", new Vultr.UserArgs
-    ///         {
-    ///             ApiEnabled = true,
-    ///             Email = "user@vultr.com",
-    ///             Password = "myP@ssw0rd",
-    ///         });
-    ///     }
+    ///         ApiEnabled = true,
+    ///         Email = "user@vultr.com",
+    ///         Password = "myP@ssw0rd",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a new User with all ACLs
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myUser = new Vultr.User("myUser", new()
     ///     {
-    ///         var myUser = new Vultr.User("myUser", new Vultr.UserArgs
+    ///         Acls = new[]
     ///         {
-    ///             Acls = 
-    ///             {
-    ///                 "manage_users",
-    ///                 "subscriptions",
-    ///                 "provisioning",
-    ///                 "billing",
-    ///                 "support",
-    ///                 "abuse",
-    ///                 "dns",
-    ///                 "upgrade",
-    ///             },
-    ///             ApiEnabled = true,
-    ///             Email = "user@vultr.com",
-    ///             Password = "myP@ssw0rd",
-    ///         });
-    ///     }
+    ///             "manage_users",
+    ///             "subscriptions",
+    ///             "provisioning",
+    ///             "billing",
+    ///             "support",
+    ///             "abuse",
+    ///             "dns",
+    ///             "upgrade",
+    ///         },
+    ///         ApiEnabled = true,
+    ///         Email = "user@vultr.com",
+    ///         Password = "myP@ssw0rd",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +72,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access control list for the user.
@@ -155,7 +151,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         [Input("acls")]
         private InputList<string>? _acls;
@@ -196,9 +192,10 @@ namespace Pulumi.Vultr
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         [Input("acls")]
         private InputList<string>? _acls;
@@ -242,5 +239,6 @@ namespace Pulumi.Vultr
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

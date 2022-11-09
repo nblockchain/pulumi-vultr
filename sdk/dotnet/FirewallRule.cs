@@ -17,30 +17,29 @@ namespace Pulumi.Vultr
     /// Create a Firewall Rule
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myFirewallgroup = new Vultr.FirewallGroup("myFirewallgroup", new()
     ///     {
-    ///         var myFirewallgroup = new Vultr.FirewallGroup("myFirewallgroup", new Vultr.FirewallGroupArgs
-    ///         {
-    ///             Description = "base firewall",
-    ///         });
-    ///         var myFirewallrule = new Vultr.FirewallRule("myFirewallrule", new Vultr.FirewallRuleArgs
-    ///         {
-    ///             FirewallGroupId = myFirewallgroup.Id,
-    ///             Protocol = "tcp",
-    ///             IpType = "v4",
-    ///             Subnet = "0.0.0.0",
-    ///             SubnetSize = 0,
-    ///             Port = "8090",
-    ///             Notes = "my firewall rule",
-    ///         });
-    ///     }
+    ///         Description = "base firewall",
+    ///     });
     /// 
-    /// }
+    ///     var myFirewallrule = new Vultr.FirewallRule("myFirewallrule", new()
+    ///     {
+    ///         FirewallGroupId = myFirewallgroup.Id,
+    ///         Protocol = "tcp",
+    ///         IpType = "v4",
+    ///         Subnet = "0.0.0.0",
+    ///         SubnetSize = 0,
+    ///         Port = "8090",
+    ///         Notes = "my firewall rule",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/firewallRule:FirewallRule")]
-    public partial class FirewallRule : Pulumi.CustomResource
+    public partial class FirewallRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The firewall group that the firewall rule will belong to.
@@ -146,7 +145,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class FirewallRuleArgs : Pulumi.ResourceArgs
+    public sealed class FirewallRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The firewall group that the firewall rule will belong to.
@@ -199,9 +198,10 @@ namespace Pulumi.Vultr
         public FirewallRuleArgs()
         {
         }
+        public static new FirewallRuleArgs Empty => new FirewallRuleArgs();
     }
 
-    public sealed class FirewallRuleState : Pulumi.ResourceArgs
+    public sealed class FirewallRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The firewall group that the firewall rule will belong to.
@@ -254,5 +254,6 @@ namespace Pulumi.Vultr
         public FirewallRuleState()
         {
         }
+        public static new FirewallRuleState Empty => new FirewallRuleState();
     }
 }

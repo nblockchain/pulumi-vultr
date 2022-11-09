@@ -17,21 +17,19 @@ namespace Pulumi.Vultr
     /// Create a new Block Storage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myBlockstorage = new Vultr.BlockStorage("myBlockstorage", new()
     ///     {
-    ///         var myBlockstorage = new Vultr.BlockStorage("myBlockstorage", new Vultr.BlockStorageArgs
-    ///         {
-    ///             Region = "ewr",
-    ///             SizeGb = 10,
-    ///         });
-    ///     }
+    ///         Region = "ewr",
+    ///         SizeGb = 10,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,13 +41,19 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/blockStorage:BlockStorage")]
-    public partial class BlockStorage : Pulumi.CustomResource
+    public partial class BlockStorage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// VPS ID that you want to have this block storage attached to.
         /// </summary>
         [Output("attachedToInstance")]
         public Output<string?> AttachedToInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        /// </summary>
+        [Output("blockType")]
+        public Output<string> BlockType { get; private set; } = null!;
 
         /// <summary>
         /// The monthly cost of this block storage.
@@ -143,13 +147,19 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class BlockStorageArgs : Pulumi.ResourceArgs
+    public sealed class BlockStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// VPS ID that you want to have this block storage attached to.
         /// </summary>
         [Input("attachedToInstance")]
         public Input<string>? AttachedToInstance { get; set; }
+
+        /// <summary>
+        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        /// </summary>
+        [Input("blockType")]
+        public Input<string>? BlockType { get; set; }
 
         /// <summary>
         /// Label that is given to your block storage.
@@ -178,15 +188,22 @@ namespace Pulumi.Vultr
         public BlockStorageArgs()
         {
         }
+        public static new BlockStorageArgs Empty => new BlockStorageArgs();
     }
 
-    public sealed class BlockStorageState : Pulumi.ResourceArgs
+    public sealed class BlockStorageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// VPS ID that you want to have this block storage attached to.
         /// </summary>
         [Input("attachedToInstance")]
         public Input<string>? AttachedToInstance { get; set; }
+
+        /// <summary>
+        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        /// </summary>
+        [Input("blockType")]
+        public Input<string>? BlockType { get; set; }
 
         /// <summary>
         /// The monthly cost of this block storage.
@@ -239,5 +256,6 @@ namespace Pulumi.Vultr
         public BlockStorageState()
         {
         }
+        public static new BlockStorageState Empty => new BlockStorageState();
     }
 }

@@ -13,39 +13,9 @@ namespace Pulumi.Vultr
     /// Provides a Vultr Reverse IPv6 resource. This can be used to create, read,
     /// modify, and delete reverse DNS records for IPv6 addresses. Upon success, DNS
     /// changes may take 6-12 hours to become active.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Create a new reverse DNS record for an IPv6 address:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Vultr = Pulumi.Vultr;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myServer = new Vultr.Instance("myServer", new Vultr.InstanceArgs
-    ///         {
-    ///             Plan = "vc2-1c-1gb",
-    ///             Region = "ewr",
-    ///             OsId = 167,
-    ///             EnableIpv6 = true,
-    ///         });
-    ///         var myReverseIpv6 = new Vultr.ReverseIpv6("myReverseIpv6", new Vultr.ReverseIpv6Args
-    ///         {
-    ///             InstanceId = vultr_server.My_server.Id,
-    ///             Ip = vultr_server.My_server.V6_networks[0].V6_main_ip,
-    ///             Reverse = "host.example.com",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [VultrResourceType("vultr:index/reverseIpv6:ReverseIpv6")]
-    public partial class ReverseIpv6 : Pulumi.CustomResource
+    public partial class ReverseIpv6 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the server you want to set an IPv6
@@ -110,7 +80,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class ReverseIpv6Args : Pulumi.ResourceArgs
+    public sealed class ReverseIpv6Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the server you want to set an IPv6
@@ -134,9 +104,10 @@ namespace Pulumi.Vultr
         public ReverseIpv6Args()
         {
         }
+        public static new ReverseIpv6Args Empty => new ReverseIpv6Args();
     }
 
-    public sealed class ReverseIpv6State : Pulumi.ResourceArgs
+    public sealed class ReverseIpv6State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the server you want to set an IPv6
@@ -160,5 +131,6 @@ namespace Pulumi.Vultr
         public ReverseIpv6State()
         {
         }
+        public static new ReverseIpv6State Empty => new ReverseIpv6State();
     }
 }

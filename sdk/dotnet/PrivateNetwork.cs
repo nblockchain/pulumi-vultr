@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr
 {
     /// <summary>
+    /// Deprecated: Use `vultr.VPC` instead
+    /// 
     /// Provides a Vultr private network resource. This can be used to create, read, and delete private networks on your Vultr account.
     /// 
     /// ## Example Usage
@@ -17,43 +19,39 @@ namespace Pulumi.Vultr
     /// Create a new private network with an automatically generated CIDR block:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myNetwork = new Vultr.PrivateNetwork("myNetwork", new()
     ///     {
-    ///         var myNetwork = new Vultr.PrivateNetwork("myNetwork", new Vultr.PrivateNetworkArgs
-    ///         {
-    ///             Description = "my private network",
-    ///             Region = "ewr",
-    ///         });
-    ///     }
+    ///         Description = "my private network",
+    ///         Region = "ewr",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a new private network with a specified CIDR block:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myNetwork = new Vultr.PrivateNetwork("myNetwork", new()
     ///     {
-    ///         var myNetwork = new Vultr.PrivateNetwork("myNetwork", new Vultr.PrivateNetworkArgs
-    ///         {
-    ///             Description = "my private network",
-    ///             Region = "ewr",
-    ///             V4Subnet = "10.0.0.0",
-    ///             V4SubnetMask = 24,
-    ///         });
-    ///     }
+    ///         Description = "my private network",
+    ///         Region = "ewr",
+    ///         V4Subnet = "10.0.0.0",
+    ///         V4SubnetMask = 24,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +63,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/privateNetwork:PrivateNetwork")]
-    public partial class PrivateNetwork : Pulumi.CustomResource
+    public partial class PrivateNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date that the network was added to your Vultr account.
@@ -141,7 +139,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class PrivateNetworkArgs : Pulumi.ResourceArgs
+    public sealed class PrivateNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description you want to give your network.
@@ -170,9 +168,10 @@ namespace Pulumi.Vultr
         public PrivateNetworkArgs()
         {
         }
+        public static new PrivateNetworkArgs Empty => new PrivateNetworkArgs();
     }
 
-    public sealed class PrivateNetworkState : Pulumi.ResourceArgs
+    public sealed class PrivateNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date that the network was added to your Vultr account.
@@ -207,5 +206,6 @@ namespace Pulumi.Vultr
         public PrivateNetworkState()
         {
         }
+        public static new PrivateNetworkState Empty => new PrivateNetworkState();
     }
 }

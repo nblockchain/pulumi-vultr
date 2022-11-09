@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,26 +21,24 @@ namespace Pulumi.Vultr
         /// Get the information for a DNS domain:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myDomain = Vultr.GetDnsDomain.Invoke(new()
         ///     {
-        ///         var myDomain = Output.Create(Vultr.GetDnsDomain.InvokeAsync(new Vultr.GetDnsDomainArgs
-        ///         {
-        ///             Domain = "example.com",
-        ///         }));
-        ///     }
+        ///         Domain = "example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDnsDomainResult> InvokeAsync(GetDnsDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsDomainResult>("vultr:index/getDnsDomain:getDnsDomain", args ?? new GetDnsDomainArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsDomainResult>("vultr:index/getDnsDomain:getDnsDomain", args ?? new GetDnsDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a DNS domain associated with your Vultr account.
@@ -53,30 +50,28 @@ namespace Pulumi.Vultr
         /// Get the information for a DNS domain:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myDomain = Vultr.GetDnsDomain.Invoke(new()
         ///     {
-        ///         var myDomain = Output.Create(Vultr.GetDnsDomain.InvokeAsync(new Vultr.GetDnsDomainArgs
-        ///         {
-        ///             Domain = "example.com",
-        ///         }));
-        ///     }
+        ///         Domain = "example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDnsDomainResult> Invoke(GetDnsDomainInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDnsDomainResult>("vultr:index/getDnsDomain:getDnsDomain", args ?? new GetDnsDomainInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDnsDomainResult>("vultr:index/getDnsDomain:getDnsDomain", args ?? new GetDnsDomainInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDnsDomainArgs : Pulumi.InvokeArgs
+    public sealed class GetDnsDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name you're searching for.
@@ -87,9 +82,10 @@ namespace Pulumi.Vultr
         public GetDnsDomainArgs()
         {
         }
+        public static new GetDnsDomainArgs Empty => new GetDnsDomainArgs();
     }
 
-    public sealed class GetDnsDomainInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDnsDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name you're searching for.
@@ -100,6 +96,7 @@ namespace Pulumi.Vultr
         public GetDnsDomainInvokeArgs()
         {
         }
+        public static new GetDnsDomainInvokeArgs Empty => new GetDnsDomainInvokeArgs();
     }
 
 

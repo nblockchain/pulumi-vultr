@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetReverseIpv6FilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetReverseIpv6FilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetReverseIpv6FilterInputArgs()
         {
         }
+        public static new GetReverseIpv6FilterInputArgs Empty => new GetReverseIpv6FilterInputArgs();
     }
 }

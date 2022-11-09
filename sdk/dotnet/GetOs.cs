@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for an operating system by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var centos = Vultr.GetOs.Invoke(new()
         ///     {
-        ///         var centos = Output.Create(Vultr.GetOs.InvokeAsync(new Vultr.GetOsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetOsFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetOsFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "CentOS 7 x64",
-        ///                     },
+        ///                     "CentOS 7 x64",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOsResult> InvokeAsync(GetOsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOsResult>("vultr:index/getOs:getOs", args ?? new GetOsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOsResult>("vultr:index/getOs:getOs", args ?? new GetOsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about operating systems that can be launched when creating a Vultr VPS.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for an operating system by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var centos = Vultr.GetOs.Invoke(new()
         ///     {
-        ///         var centos = Output.Create(Vultr.GetOs.InvokeAsync(new Vultr.GetOsArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetOsFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetOsFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "CentOS 7 x64",
-        ///                     },
+        ///                     "CentOS 7 x64",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOsResult> Invoke(GetOsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOsResult>("vultr:index/getOs:getOs", args ?? new GetOsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOsResult>("vultr:index/getOs:getOs", args ?? new GetOsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetOsArgs : Pulumi.InvokeArgs
+    public sealed class GetOsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetOsFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetOsArgs()
         {
         }
+        public static new GetOsArgs Empty => new GetOsArgs();
     }
 
-    public sealed class GetOsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetOsFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetOsInvokeArgs()
         {
         }
+        public static new GetOsInvokeArgs Empty => new GetOsInvokeArgs();
     }
 
 

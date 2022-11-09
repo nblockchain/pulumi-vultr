@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class LoadBalancerSslGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerSslGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SSL Certificate.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public LoadBalancerSslGetArgs()
         {
         }
+        public static new LoadBalancerSslGetArgs Empty => new LoadBalancerSslGetArgs();
     }
 }

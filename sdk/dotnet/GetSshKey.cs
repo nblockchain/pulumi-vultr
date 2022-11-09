@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for an SSH key by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mySshKey = Vultr.GetSshKey.Invoke(new()
         ///     {
-        ///         var mySshKey = Output.Create(Vultr.GetSshKey.InvokeAsync(new Vultr.GetSshKeyArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetSshKeyFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetSshKeyFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-ssh-key-name",
-        ///                     },
+        ///                     "my-ssh-key-name",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("vultr:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("vultr:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr SSH key. This data source provides the name, public SSH key, and the creation date for your Vultr SSH key.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for an SSH key by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mySshKey = Vultr.GetSshKey.Invoke(new()
         ///     {
-        ///         var mySshKey = Output.Create(Vultr.GetSshKey.InvokeAsync(new Vultr.GetSshKeyArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetSshKeyFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetSshKeyFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-ssh-key-name",
-        ///                     },
+        ///                     "my-ssh-key-name",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("vultr:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("vultr:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSshKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetSshKeyFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetSshKeyArgs()
         {
         }
+        public static new GetSshKeyArgs Empty => new GetSshKeyArgs();
     }
 
-    public sealed class GetSshKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetSshKeyFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetSshKeyInvokeArgs()
         {
         }
+        public static new GetSshKeyInvokeArgs Empty => new GetSshKeyInvokeArgs();
     }
 
 

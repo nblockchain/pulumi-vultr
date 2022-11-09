@@ -17,44 +17,40 @@ namespace Pulumi.Vultr
     /// Create a new reserved IP:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myReservedIp = new Vultr.ReservedIP("myReservedIp", new()
     ///     {
-    ///         var myReservedIp = new Vultr.ReservedIP("myReservedIp", new Vultr.ReservedIPArgs
-    ///         {
-    ///             IpType = "v4",
-    ///             Label = "my-reserved-ip",
-    ///             Region = "sea",
-    ///         });
-    ///     }
+    ///         IpType = "v4",
+    ///         Label = "my-reserved-ip",
+    ///         Region = "sea",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Attach a reserved IP to a instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myReservedIp = new Vultr.ReservedIP("myReservedIp", new()
     ///     {
-    ///         var myReservedIp = new Vultr.ReservedIP("myReservedIp", new Vultr.ReservedIPArgs
-    ///         {
-    ///             InstanceId = "b9cc6fad-70b1-40ee-ab6a-4d622858962f",
-    ///             IpType = "v4",
-    ///             Label = "my-reserved-ip",
-    ///             Region = "sea",
-    ///         });
-    ///     }
+    ///         InstanceId = "b9cc6fad-70b1-40ee-ab6a-4d622858962f",
+    ///         IpType = "v4",
+    ///         Label = "my-reserved-ip",
+    ///         Region = "sea",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +62,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/reservedIP:ReservedIP")]
-    public partial class ReservedIP : Pulumi.CustomResource
+    public partial class ReservedIP : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The VPS ID you want this reserved IP to be attached to.
@@ -148,7 +144,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class ReservedIPArgs : Pulumi.ResourceArgs
+    public sealed class ReservedIPArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The VPS ID you want this reserved IP to be attached to.
@@ -177,9 +173,10 @@ namespace Pulumi.Vultr
         public ReservedIPArgs()
         {
         }
+        public static new ReservedIPArgs Empty => new ReservedIPArgs();
     }
 
-    public sealed class ReservedIPState : Pulumi.ResourceArgs
+    public sealed class ReservedIPState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The VPS ID you want this reserved IP to be attached to.
@@ -220,5 +217,6 @@ namespace Pulumi.Vultr
         public ReservedIPState()
         {
         }
+        public static new ReservedIPState Empty => new ReservedIPState();
     }
 }

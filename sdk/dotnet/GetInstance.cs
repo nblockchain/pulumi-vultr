@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a instance by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstance = Vultr.GetInstance.Invoke(new()
         ///     {
-        ///         var myInstance = Output.Create(Vultr.GetInstance.InvokeAsync(new Vultr.GetInstanceArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetInstanceFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetInstanceFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-instance-label",
-        ///                     },
+        ///                     "my-instance-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("vultr:index/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("vultr:index/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr instance.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a instance by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstance = Vultr.GetInstance.Invoke(new()
         ///     {
-        ///         var myInstance = Output.Create(Vultr.GetInstance.InvokeAsync(new Vultr.GetInstanceArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetInstanceFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetInstanceFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-instance-label",
-        ///                     },
+        ///                     "my-instance-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("vultr:index/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("vultr:index/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetInstanceFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetInstanceArgs()
         {
         }
+        public static new GetInstanceArgs Empty => new GetInstanceArgs();
     }
 
-    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetInstanceFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetInstanceInvokeArgs()
         {
         }
+        public static new GetInstanceInvokeArgs Empty => new GetInstanceInvokeArgs();
     }
 
 
@@ -221,6 +218,7 @@ namespace Pulumi.Vultr
         /// Whether the server is powered on or not.
         /// </summary>
         public readonly string PowerStatus;
+        public readonly ImmutableArray<string> PrivateNetworkIds;
         /// <summary>
         /// The amount of memory available on the instance in MB.
         /// </summary>
@@ -242,6 +240,10 @@ namespace Pulumi.Vultr
         /// </summary>
         public readonly string Tag;
         /// <summary>
+        /// A list of tags applied to the instance.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
         /// The main IPv6 network address.
         /// </summary>
         public readonly string V6MainIp;
@@ -257,6 +259,7 @@ namespace Pulumi.Vultr
         /// The number of virtual CPUs available on the server.
         /// </summary>
         public readonly int VcpuCount;
+        public readonly ImmutableArray<string> VpcIds;
 
         [OutputConstructor]
         private GetInstanceResult(
@@ -306,6 +309,8 @@ namespace Pulumi.Vultr
 
             string powerStatus,
 
+            ImmutableArray<string> privateNetworkIds,
+
             int ram,
 
             string region,
@@ -316,13 +321,17 @@ namespace Pulumi.Vultr
 
             string tag,
 
+            ImmutableArray<string> tags,
+
             string v6MainIp,
 
             string v6Network,
 
             int v6NetworkSize,
 
-            int vcpuCount)
+            int vcpuCount,
+
+            ImmutableArray<string> vpcIds)
         {
             AllowedBandwidth = allowedBandwidth;
             AppId = appId;
@@ -347,15 +356,18 @@ namespace Pulumi.Vultr
             OsId = osId;
             Plan = plan;
             PowerStatus = powerStatus;
+            PrivateNetworkIds = privateNetworkIds;
             Ram = ram;
             Region = region;
             ServerStatus = serverStatus;
             Status = status;
             Tag = tag;
+            Tags = tags;
             V6MainIp = v6MainIp;
             V6Network = v6Network;
             V6NetworkSize = v6NetworkSize;
             VcpuCount = vcpuCount;
+            VpcIds = vpcIds;
         }
     }
 }

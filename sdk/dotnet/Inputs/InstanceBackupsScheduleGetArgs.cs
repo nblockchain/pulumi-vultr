@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class InstanceBackupsScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBackupsScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Day of month to run. Use values between 1 and 28.
@@ -31,7 +31,7 @@ namespace Pulumi.Vultr.Inputs
         public Input<int>? Hour { get; set; }
 
         /// <summary>
-        /// Type of backup schedule Possible values are `daily`, `weekly`, `monthly`, `daily_alt_event`, or `daily_alt_odd`.
+        /// Type of backup schedule Possible values are `daily`, `weekly`, `monthly`, `daily_alt_even`, or `daily_alt_odd`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -39,5 +39,6 @@ namespace Pulumi.Vultr.Inputs
         public InstanceBackupsScheduleGetArgs()
         {
         }
+        public static new InstanceBackupsScheduleGetArgs Empty => new InstanceBackupsScheduleGetArgs();
     }
 }

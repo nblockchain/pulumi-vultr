@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for an IPv4 address by `instance_id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstanceIpv4 = Vultr.GetInstanceIpv4.Invoke(new()
         ///     {
-        ///         var myInstanceIpv4 = Output.Create(Vultr.GetInstanceIpv4.InvokeAsync(new Vultr.GetInstanceIpv4Args
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetInstanceIpv4FilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetInstanceIpv4FilterArgs
+        ///                 Name = "ip",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "ip",
-        ///                     Values = 
-        ///                     {
-        ///                         "123.123.123.123",
-        ///                     },
+        ///                     "123.123.123.123",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceIpv4Result> InvokeAsync(GetInstanceIpv4Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceIpv4Result>("vultr:index/getInstanceIpv4:getInstanceIpv4", args ?? new GetInstanceIpv4Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceIpv4Result>("vultr:index/getInstanceIpv4:getInstanceIpv4", args ?? new GetInstanceIpv4Args(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr instance IPv4.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for an IPv4 address by `instance_id`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstanceIpv4 = Vultr.GetInstanceIpv4.Invoke(new()
         ///     {
-        ///         var myInstanceIpv4 = Output.Create(Vultr.GetInstanceIpv4.InvokeAsync(new Vultr.GetInstanceIpv4Args
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetInstanceIpv4FilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetInstanceIpv4FilterArgs
+        ///                 Name = "ip",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "ip",
-        ///                     Values = 
-        ///                     {
-        ///                         "123.123.123.123",
-        ///                     },
+        ///                     "123.123.123.123",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceIpv4Result> Invoke(GetInstanceIpv4InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceIpv4Result>("vultr:index/getInstanceIpv4:getInstanceIpv4", args ?? new GetInstanceIpv4InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceIpv4Result>("vultr:index/getInstanceIpv4:getInstanceIpv4", args ?? new GetInstanceIpv4InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceIpv4Args : Pulumi.InvokeArgs
+    public sealed class GetInstanceIpv4Args : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetInstanceIpv4FilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetInstanceIpv4Args()
         {
         }
+        public static new GetInstanceIpv4Args Empty => new GetInstanceIpv4Args();
     }
 
-    public sealed class GetInstanceIpv4InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceIpv4InvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetInstanceIpv4FilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetInstanceIpv4InvokeArgs()
         {
         }
+        public static new GetInstanceIpv4InvokeArgs Empty => new GetInstanceIpv4InvokeArgs();
     }
 
 

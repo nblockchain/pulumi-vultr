@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,65 +21,61 @@ namespace Pulumi.Vultr
         /// Get the information for a user by `email`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myUser = Vultr.GetUser.Invoke(new()
         ///     {
-        ///         var myUser = Output.Create(Vultr.GetUser.InvokeAsync(new Vultr.GetUserArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetUserFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetUserFilterArgs
+        ///                 Name = "email",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "email",
-        ///                     Values = 
-        ///                     {
-        ///                         "jdoe@example.com",
-        ///                     },
+        ///                     "jdoe@example.com",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get the information for a user by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myUser = Vultr.GetUser.Invoke(new()
         ///     {
-        ///         var myUser = Output.Create(Vultr.GetUser.InvokeAsync(new Vultr.GetUserArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetUserFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetUserFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "John Doe",
-        ///                     },
+        ///                     "John Doe",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("vultr:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("vultr:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr user associated with your account. This data source provides the name, email, access control list, and API status for a Vultr user associated with your account.
@@ -92,69 +87,65 @@ namespace Pulumi.Vultr
         /// Get the information for a user by `email`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myUser = Vultr.GetUser.Invoke(new()
         ///     {
-        ///         var myUser = Output.Create(Vultr.GetUser.InvokeAsync(new Vultr.GetUserArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetUserFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetUserFilterArgs
+        ///                 Name = "email",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "email",
-        ///                     Values = 
-        ///                     {
-        ///                         "jdoe@example.com",
-        ///                     },
+        ///                     "jdoe@example.com",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Get the information for a user by `name`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myUser = Vultr.GetUser.Invoke(new()
         ///     {
-        ///         var myUser = Output.Create(Vultr.GetUser.InvokeAsync(new Vultr.GetUserArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetUserFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetUserFilterArgs
+        ///                 Name = "name",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "name",
-        ///                     Values = 
-        ///                     {
-        ///                         "John Doe",
-        ///                     },
+        ///                     "John Doe",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("vultr:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("vultr:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
+    public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetUserFilterArgs>? _filters;
@@ -171,9 +162,10 @@ namespace Pulumi.Vultr
         public GetUserArgs()
         {
         }
+        public static new GetUserArgs Empty => new GetUserArgs();
     }
 
-    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetUserFilterInputArgs>? _filters;
@@ -190,6 +182,7 @@ namespace Pulumi.Vultr
         public GetUserInvokeArgs()
         {
         }
+        public static new GetUserInvokeArgs Empty => new GetUserInvokeArgs();
     }
 
 

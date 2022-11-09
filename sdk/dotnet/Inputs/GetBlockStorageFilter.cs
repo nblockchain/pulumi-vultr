@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetBlockStorageFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetBlockStorageFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetBlockStorageFilterArgs()
         {
         }
+        public static new GetBlockStorageFilterArgs Empty => new GetBlockStorageFilterArgs();
     }
 }

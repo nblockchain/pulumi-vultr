@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a load balancer by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myLb = Vultr.GetLoadBalancer.Invoke(new()
         ///     {
-        ///         var myLb = Output.Create(Vultr.GetLoadBalancer.InvokeAsync(new Vultr.GetLoadBalancerArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetLoadBalancerFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetLoadBalancerFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-lb-label",
-        ///                     },
+        ///                     "my-lb-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("vultr:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("vultr:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr load balancer.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a load balancer by `label`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myLb = Vultr.GetLoadBalancer.Invoke(new()
         ///     {
-        ///         var myLb = Output.Create(Vultr.GetLoadBalancer.InvokeAsync(new Vultr.GetLoadBalancerArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetLoadBalancerFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetLoadBalancerFilterArgs
+        ///                 Name = "label",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "label",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-lb-label",
-        ///                     },
+        ///                     "my-lb-label",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("vultr:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("vultr:index/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLoadBalancerArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancerArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetLoadBalancerFilterArgs>? _filters;
@@ -119,9 +114,10 @@ namespace Pulumi.Vultr
         public GetLoadBalancerArgs()
         {
         }
+        public static new GetLoadBalancerArgs Empty => new GetLoadBalancerArgs();
     }
 
-    public sealed class GetLoadBalancerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetLoadBalancerFilterInputArgs>? _filters;
@@ -144,6 +140,7 @@ namespace Pulumi.Vultr
         public GetLoadBalancerInvokeArgs()
         {
         }
+        public static new GetLoadBalancerInvokeArgs Empty => new GetLoadBalancerInvokeArgs();
     }
 
 
@@ -194,7 +191,7 @@ namespace Pulumi.Vultr
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Defines the private network the load balancer is attached to.
+        /// (Deprecated: use `vpc` instead) Defines the private network the load balancer is attached to.
         /// </summary>
         public readonly string PrivateNetwork;
         /// <summary>

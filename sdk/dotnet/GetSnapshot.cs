@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a snapshot by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mySnapshot = Vultr.GetSnapshot.Invoke(new()
         ///     {
-        ///         var mySnapshot = Output.Create(Vultr.GetSnapshot.InvokeAsync(new Vultr.GetSnapshotArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetSnapshotFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetSnapshotFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-snapshot-description",
-        ///                     },
+        ///                     "my-snapshot-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("vultr:index/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("vultr:index/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Vultr snapshot.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a snapshot by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mySnapshot = Vultr.GetSnapshot.Invoke(new()
         ///     {
-        ///         var mySnapshot = Output.Create(Vultr.GetSnapshot.InvokeAsync(new Vultr.GetSnapshotArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetSnapshotFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetSnapshotFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "my-snapshot-description",
-        ///                     },
+        ///                     "my-snapshot-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("vultr:index/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("vultr:index/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetSnapshotFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetSnapshotArgs()
         {
         }
+        public static new GetSnapshotArgs Empty => new GetSnapshotArgs();
     }
 
-    public sealed class GetSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetSnapshotFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetSnapshotInvokeArgs()
         {
         }
+        public static new GetSnapshotInvokeArgs Empty => new GetSnapshotInvokeArgs();
     }
 
 

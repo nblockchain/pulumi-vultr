@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Vultr
 {
@@ -22,36 +21,34 @@ namespace Pulumi.Vultr
         /// Get the information for a ISO file by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myIso = Vultr.GetIsoPublic.Invoke(new()
         ///     {
-        ///         var myIso = Output.Create(Vultr.GetIsoPublic.InvokeAsync(new Vultr.GetIsoPublicArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetIsoPublicFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetIsoPublicFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "iso-description",
-        ///                     },
+        ///                     "iso-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIsoPublicResult> InvokeAsync(GetIsoPublicArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIsoPublicResult>("vultr:index/getIsoPublic:getIsoPublic", args ?? new GetIsoPublicArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIsoPublicResult>("vultr:index/getIsoPublic:getIsoPublic", args ?? new GetIsoPublicArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about an ISO file offered in the Vultr ISO library.
@@ -63,40 +60,38 @@ namespace Pulumi.Vultr
         /// Get the information for a ISO file by `description`:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Vultr = Pulumi.Vultr;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myIso = Vultr.GetIsoPublic.Invoke(new()
         ///     {
-        ///         var myIso = Output.Create(Vultr.GetIsoPublic.InvokeAsync(new Vultr.GetIsoPublicArgs
+        ///         Filters = new[]
         ///         {
-        ///             Filters = 
+        ///             new Vultr.Inputs.GetIsoPublicFilterInputArgs
         ///             {
-        ///                 new Vultr.Inputs.GetIsoPublicFilterArgs
+        ///                 Name = "description",
+        ///                 Values = new[]
         ///                 {
-        ///                     Name = "description",
-        ///                     Values = 
-        ///                     {
-        ///                         "iso-description",
-        ///                     },
+        ///                     "iso-description",
         ///                 },
         ///             },
-        ///         }));
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIsoPublicResult> Invoke(GetIsoPublicInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIsoPublicResult>("vultr:index/getIsoPublic:getIsoPublic", args ?? new GetIsoPublicInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIsoPublicResult>("vultr:index/getIsoPublic:getIsoPublic", args ?? new GetIsoPublicInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIsoPublicArgs : Pulumi.InvokeArgs
+    public sealed class GetIsoPublicArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetIsoPublicFilterArgs>? _filters;
@@ -113,9 +108,10 @@ namespace Pulumi.Vultr
         public GetIsoPublicArgs()
         {
         }
+        public static new GetIsoPublicArgs Empty => new GetIsoPublicArgs();
     }
 
-    public sealed class GetIsoPublicInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIsoPublicInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetIsoPublicFilterInputArgs>? _filters;
@@ -132,6 +128,7 @@ namespace Pulumi.Vultr
         public GetIsoPublicInvokeArgs()
         {
         }
+        public static new GetIsoPublicInvokeArgs Empty => new GetIsoPublicInvokeArgs();
     }
 
 

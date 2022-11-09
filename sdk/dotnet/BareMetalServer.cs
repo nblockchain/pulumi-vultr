@@ -17,49 +17,48 @@ namespace Pulumi.Vultr
     /// Create a new bare metal server:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myServer = new Vultr.BareMetalServer("myServer", new()
     ///     {
-    ///         var myServer = new Vultr.BareMetalServer("myServer", new Vultr.BareMetalServerArgs
-    ///         {
-    ///             OsId = 270,
-    ///             Plan = "vbm-4c-32gb",
-    ///             Region = "ewr",
-    ///         });
-    ///     }
+    ///         OsId = 270,
+    ///         Plan = "vbm-4c-32gb",
+    ///         Region = "ewr",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a new bare metal server with options:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myServer = new Vultr.BareMetalServer("myServer", new()
     ///     {
-    ///         var myServer = new Vultr.BareMetalServer("myServer", new Vultr.BareMetalServerArgs
+    ///         ActivationEmail = false,
+    ///         EnableIpv6 = true,
+    ///         Hostname = "my-server-hostname",
+    ///         Label = "my-server-label",
+    ///         OsId = 270,
+    ///         Plan = "vbm-4c-32gb",
+    ///         Region = "ewr",
+    ///         Tags = new[]
     ///         {
-    ///             ActivationEmail = false,
-    ///             EnableIpv6 = true,
-    ///             Hostname = "my-server-hostname",
-    ///             Label = "my-server-label",
-    ///             OsId = 270,
-    ///             Plan = "vbm-4c-32gb",
-    ///             Region = "ewr",
-    ///             Tag = "my-server-tag",
-    ///             UserData = "this is my user data",
-    ///         });
-    ///     }
+    ///             "my-server-tag",
+    ///         },
+    ///         UserData = "this is my user data",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/bareMetalServer:BareMetalServer")]
-    public partial class BareMetalServer : Pulumi.CustomResource
+    public partial class BareMetalServer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether an activation email will be sent when the server is ready.
@@ -218,10 +217,16 @@ namespace Pulumi.Vultr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag to assign to the server.
+        /// (Optional) The tag to assign to the server.
         /// </summary>
         [Output("tag")]
         public Output<string?> Tag { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of tags to apply to the servier.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.
@@ -291,7 +296,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class BareMetalServerArgs : Pulumi.ResourceArgs
+    public sealed class BareMetalServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether an activation email will be sent when the server is ready.
@@ -378,10 +383,22 @@ namespace Pulumi.Vultr
         }
 
         /// <summary>
-        /// The tag to assign to the server.
+        /// (Optional) The tag to assign to the server.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tags to apply to the servier.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.
@@ -392,9 +409,10 @@ namespace Pulumi.Vultr
         public BareMetalServerArgs()
         {
         }
+        public static new BareMetalServerArgs Empty => new BareMetalServerArgs();
     }
 
-    public sealed class BareMetalServerState : Pulumi.ResourceArgs
+    public sealed class BareMetalServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether an activation email will be sent when the server is ready.
@@ -547,10 +565,22 @@ namespace Pulumi.Vultr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The tag to assign to the server.
+        /// (Optional) The tag to assign to the server.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tags to apply to the servier.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.
@@ -579,5 +609,6 @@ namespace Pulumi.Vultr
         public BareMetalServerState()
         {
         }
+        public static new BareMetalServerState Empty => new BareMetalServerState();
     }
 }

@@ -23,8 +23,10 @@ from .get_instance import *
 from .get_instance_ipv4 import *
 from .get_iso_private import *
 from .get_iso_public import *
+from .get_kubernetes import *
 from .get_load_balancer import *
 from .get_object_storage import *
+from .get_object_storage_cluster import *
 from .get_os import *
 from .get_plan import *
 from .get_private_network import *
@@ -36,9 +38,11 @@ from .get_snapshot import *
 from .get_ssh_key import *
 from .get_startup_script import *
 from .get_user import *
+from .get_vpc import *
 from .instance import *
 from .instance_i_pv4 import *
 from .iso_private import *
+from .kubernetes import *
 from .load_balancer import *
 from .object_storage import *
 from .private_network import *
@@ -51,6 +55,7 @@ from .snapshot_from_url import *
 from .ssh_key import *
 from .startup_script import *
 from .user import *
+from .vpc import *
 from ._inputs import *
 from . import outputs
 
@@ -134,6 +139,14 @@ _utilities.register(
   "fqn": "pulumi_vultr",
   "classes": {
    "vultr:index/isoPrivate:IsoPrivate": "IsoPrivate"
+  }
+ },
+ {
+  "pkg": "vultr",
+  "mod": "index/kubernetes",
+  "fqn": "pulumi_vultr",
+  "classes": {
+   "vultr:index/kubernetes:Kubernetes": "Kubernetes"
   }
  },
  {
@@ -222,6 +235,14 @@ _utilities.register(
   "fqn": "pulumi_vultr",
   "classes": {
    "vultr:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "vultr",
+  "mod": "index/vPC",
+  "fqn": "pulumi_vultr",
+  "classes": {
+   "vultr:index/vPC:VPC": "VPC"
   }
  }
 ]

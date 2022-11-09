@@ -17,20 +17,18 @@ namespace Pulumi.Vultr
     /// Create a new Firewall group
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myFirewallgroup = new Vultr.FirewallGroup("myFirewallgroup", new()
     ///     {
-    ///         var myFirewallgroup = new Vultr.FirewallGroup("myFirewallgroup", new Vultr.FirewallGroupArgs
-    ///         {
-    ///             Description = "base firewall",
-    ///         });
-    ///     }
+    ///         Description = "base firewall",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/firewallGroup:FirewallGroup")]
-    public partial class FirewallGroup : Pulumi.CustomResource
+    public partial class FirewallGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date the firewall group was created.
@@ -124,7 +122,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class FirewallGroupArgs : Pulumi.ResourceArgs
+    public sealed class FirewallGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the firewall group.
@@ -135,9 +133,10 @@ namespace Pulumi.Vultr
         public FirewallGroupArgs()
         {
         }
+        public static new FirewallGroupArgs Empty => new FirewallGroupArgs();
     }
 
-    public sealed class FirewallGroupState : Pulumi.ResourceArgs
+    public sealed class FirewallGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the firewall group was created.
@@ -178,5 +177,6 @@ namespace Pulumi.Vultr
         public FirewallGroupState()
         {
         }
+        public static new FirewallGroupState Empty => new FirewallGroupState();
     }
 }

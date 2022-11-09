@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class LoadBalancerForwardingRuleArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerForwardingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Port on instance side.
@@ -42,5 +42,6 @@ namespace Pulumi.Vultr.Inputs
         public LoadBalancerForwardingRuleArgs()
         {
         }
+        public static new LoadBalancerForwardingRuleArgs Empty => new LoadBalancerForwardingRuleArgs();
     }
 }

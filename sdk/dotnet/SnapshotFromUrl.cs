@@ -17,20 +17,18 @@ namespace Pulumi.Vultr
     /// Create a new Snapshots from URL
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mySnapshot = new Vultr.SnapshotFromUrl("mySnapshot", new()
     ///     {
-    ///         var mySnapshot = new Vultr.SnapshotFromUrl("mySnapshot", new Vultr.SnapshotFromUrlArgs
-    ///         {
-    ///             Url = "http://dl-cdn.alpinelinux.org/alpine/v3.9/releases/x86_64/alpine-virt-3.9.1-x86_64.iso",
-    ///         });
-    ///     }
+    ///         Url = "http://dl-cdn.alpinelinux.org/alpine/v3.9/releases/x86_64/alpine-virt-3.9.1-x86_64.iso",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/snapshotFromUrl:SnapshotFromUrl")]
-    public partial class SnapshotFromUrl : Pulumi.CustomResource
+    public partial class SnapshotFromUrl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The app id which the snapshot is associated with.
@@ -130,7 +128,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class SnapshotFromUrlArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotFromUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL of the given resource you want to create a snapshot from.
@@ -141,9 +139,10 @@ namespace Pulumi.Vultr
         public SnapshotFromUrlArgs()
         {
         }
+        public static new SnapshotFromUrlArgs Empty => new SnapshotFromUrlArgs();
     }
 
-    public sealed class SnapshotFromUrlState : Pulumi.ResourceArgs
+    public sealed class SnapshotFromUrlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The app id which the snapshot is associated with.
@@ -190,5 +189,6 @@ namespace Pulumi.Vultr
         public SnapshotFromUrlState()
         {
         }
+        public static new SnapshotFromUrlState Empty => new SnapshotFromUrlState();
     }
 }

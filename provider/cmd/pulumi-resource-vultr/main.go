@@ -12,17 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:generate go run ./generate.go
+
 package main
 
 import (
 	_ "embed"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	vultr "github.com/vincentbernat/pulumi-vultr/provider"
-	"github.com/vincentbernat/pulumi-vultr/provider/pkg/version"
+	vultr "github.com/aarani/pulumi-vultr/provider"
+	"github.com/aarani/pulumi-vultr/provider/pkg/version"
 )
 
-//go:embed schema.json
+//go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {

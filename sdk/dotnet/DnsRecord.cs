@@ -17,27 +17,26 @@ namespace Pulumi.Vultr
     /// Create a new DNS Record
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Vultr = Pulumi.Vultr;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myDomain = new Vultr.DnsDomain("myDomain", new()
     ///     {
-    ///         var myDomain = new Vultr.DnsDomain("myDomain", new Vultr.DnsDomainArgs
-    ///         {
-    ///             Domain = "domain.com",
-    ///             Ip = "66.42.94.227",
-    ///         });
-    ///         var myRecord = new Vultr.DnsRecord("myRecord", new Vultr.DnsRecordArgs
-    ///         {
-    ///             Data = "66.42.94.227",
-    ///             Domain = myDomain.Id,
-    ///             Type = "A",
-    ///         });
-    ///     }
+    ///         Domain = "domain.com",
+    ///         Ip = "66.42.94.227",
+    ///     });
     /// 
-    /// }
+    ///     var myRecord = new Vultr.DnsRecord("myRecord", new()
+    ///     {
+    ///         Data = "66.42.94.227",
+    ///         Domain = myDomain.Id,
+    ///         Type = "A",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +48,7 @@ namespace Pulumi.Vultr
     /// ```
     /// </summary>
     [VultrResourceType("vultr:index/dnsRecord:DnsRecord")]
-    public partial class DnsRecord : Pulumi.CustomResource
+    public partial class DnsRecord : global::Pulumi.CustomResource
     {
         /// <summary>
         /// IP Address of the instance the domain is associated with.
@@ -131,7 +130,7 @@ namespace Pulumi.Vultr
         }
     }
 
-    public sealed class DnsRecordArgs : Pulumi.ResourceArgs
+    public sealed class DnsRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP Address of the instance the domain is associated with.
@@ -172,9 +171,10 @@ namespace Pulumi.Vultr
         public DnsRecordArgs()
         {
         }
+        public static new DnsRecordArgs Empty => new DnsRecordArgs();
     }
 
-    public sealed class DnsRecordState : Pulumi.ResourceArgs
+    public sealed class DnsRecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP Address of the instance the domain is associated with.
@@ -215,5 +215,6 @@ namespace Pulumi.Vultr
         public DnsRecordState()
         {
         }
+        public static new DnsRecordState Empty => new DnsRecordState();
     }
 }

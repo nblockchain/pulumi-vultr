@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetFirewallGroupFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallGroupFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetFirewallGroupFilterArgs()
         {
         }
+        public static new GetFirewallGroupFilterArgs Empty => new GetFirewallGroupFilterArgs();
     }
 }

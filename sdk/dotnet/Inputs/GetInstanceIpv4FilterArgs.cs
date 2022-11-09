@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetInstanceIpv4FilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetInstanceIpv4FilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetInstanceIpv4FilterInputArgs()
         {
         }
+        public static new GetInstanceIpv4FilterInputArgs Empty => new GetInstanceIpv4FilterInputArgs();
     }
 }

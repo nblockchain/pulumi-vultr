@@ -26,7 +26,7 @@ namespace Pulumi.Vultr.Outputs
         /// </summary>
         public readonly int? Hour;
         /// <summary>
-        /// Type of backup schedule Possible values are `daily`, `weekly`, `monthly`, `daily_alt_event`, or `daily_alt_odd`.
+        /// Type of backup schedule Possible values are `daily`, `weekly`, `monthly`, `daily_alt_even`, or `daily_alt_odd`.
         /// </summary>
         public readonly string Type;
 

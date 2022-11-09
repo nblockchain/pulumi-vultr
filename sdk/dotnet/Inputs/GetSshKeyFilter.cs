@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Vultr.Inputs
 {
 
-    public sealed class GetSshKeyFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetSshKeyFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Attribute name to filter with.
@@ -33,5 +33,6 @@ namespace Pulumi.Vultr.Inputs
         public GetSshKeyFilterArgs()
         {
         }
+        public static new GetSshKeyFilterArgs Empty => new GetSshKeyFilterArgs();
     }
 }
