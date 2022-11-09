@@ -23,7 +23,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/aarani/pulumi-vultr/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/vultr/terraform-provider-vultr/vultr"
+	"github.com/nblockchain/terraform-provider-vultr/vultr"
 )
 
 // all of the token components used below.
@@ -80,7 +80,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/aarani/pulumi-vultr",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "vultr",
+		GitHubOrg: "nblockchain",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -133,6 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vultr_dns_domain":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDnsDomain")},
 			"vultr_firewall_group":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFirewallGroup")},
 			"vultr_instance":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getInstance")},
+			"vultr_instances":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getInstances")},
 			"vultr_instance_ipv4":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getInstanceIpv4")},
 			"vultr_iso_private":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIsoPrivate")},
 			"vultr_iso_public":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIsoPublic")},

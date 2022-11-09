@@ -51,7 +51,7 @@ type BlockStorage struct {
 
 	// VPS ID that you want to have this block storage attached to.
 	AttachedToInstance pulumi.StringPtrOutput `pulumi:"attachedToInstance"`
-	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
 	BlockType pulumi.StringOutput `pulumi:"blockType"`
 	// The monthly cost of this block storage.
 	Cost pulumi.Float64Output `pulumi:"cost"`
@@ -108,7 +108,7 @@ func GetBlockStorage(ctx *pulumi.Context,
 type blockStorageState struct {
 	// VPS ID that you want to have this block storage attached to.
 	AttachedToInstance *string `pulumi:"attachedToInstance"`
-	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
 	BlockType *string `pulumi:"blockType"`
 	// The monthly cost of this block storage.
 	Cost *float64 `pulumi:"cost"`
@@ -131,7 +131,7 @@ type blockStorageState struct {
 type BlockStorageState struct {
 	// VPS ID that you want to have this block storage attached to.
 	AttachedToInstance pulumi.StringPtrInput
-	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
 	BlockType pulumi.StringPtrInput
 	// The monthly cost of this block storage.
 	Cost pulumi.Float64PtrInput
@@ -158,7 +158,7 @@ func (BlockStorageState) ElementType() reflect.Type {
 type blockStorageArgs struct {
 	// VPS ID that you want to have this block storage attached to.
 	AttachedToInstance *string `pulumi:"attachedToInstance"`
-	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
 	BlockType *string `pulumi:"blockType"`
 	// Label that is given to your block storage.
 	Label *string `pulumi:"label"`
@@ -174,7 +174,7 @@ type blockStorageArgs struct {
 type BlockStorageArgs struct {
 	// VPS ID that you want to have this block storage attached to.
 	AttachedToInstance pulumi.StringPtrInput
-	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+	// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
 	BlockType pulumi.StringPtrInput
 	// Label that is given to your block storage.
 	Label pulumi.StringPtrInput
@@ -278,7 +278,7 @@ func (o BlockStorageOutput) AttachedToInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlockStorage) pulumi.StringPtrOutput { return v.AttachedToInstance }).(pulumi.StringPtrOutput)
 }
 
-// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
 func (o BlockStorageOutput) BlockType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockStorage) pulumi.StringOutput { return v.BlockType }).(pulumi.StringOutput)
 }

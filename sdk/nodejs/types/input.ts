@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
-export interface GetApplicationFilter {
-    /**
-     * Attribute name to filter with.
-     */
-    name: string;
-    /**
-     * One or more values filter with.
-     */
-    values: string[];
-}
-
 export interface GetApplicationFilterArgs {
     /**
      * Attribute name to filter with.
@@ -24,6 +13,17 @@ export interface GetApplicationFilterArgs {
      * One or more values filter with.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetApplicationFilter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values filter with.
+     */
+    values: string[];
 }
 
 export interface GetBackupFilterArgs {
@@ -48,17 +48,6 @@ export interface GetBackupFilter {
     values: string[];
 }
 
-export interface GetBareMetalPlanFilter {
-    /**
-     * Attribute name to filter with.
-     */
-    name: string;
-    /**
-     * One or more values filter with.
-     */
-    values: string[];
-}
-
 export interface GetBareMetalPlanFilterArgs {
     /**
      * Attribute name to filter with.
@@ -68,6 +57,17 @@ export interface GetBareMetalPlanFilterArgs {
      * One or more values filter with.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetBareMetalPlanFilter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values filter with.
+     */
+    values: string[];
 }
 
 export interface GetBareMetalServerFilterArgs {
@@ -92,17 +92,6 @@ export interface GetBareMetalServerFilter {
     values: string[];
 }
 
-export interface GetBlockStorageFilter {
-    /**
-     * Attribute name to filter with.
-     */
-    name: string;
-    /**
-     * One or more values filter with.
-     */
-    values: string[];
-}
-
 export interface GetBlockStorageFilterArgs {
     /**
      * Attribute name to filter with.
@@ -114,7 +103,7 @@ export interface GetBlockStorageFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetFirewallGroupFilter {
+export interface GetBlockStorageFilter {
     /**
      * Attribute name to filter with.
      */
@@ -134,6 +123,17 @@ export interface GetFirewallGroupFilterArgs {
      * One or more values filter with.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetFirewallGroupFilter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values filter with.
+     */
+    values: string[];
 }
 
 export interface GetInstanceFilterArgs {
@@ -158,6 +158,17 @@ export interface GetInstanceFilter {
     values: string[];
 }
 
+export interface GetInstanceIpv4Filter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values to filter with.
+     */
+    values: string[];
+}
+
 export interface GetInstanceIpv4FilterArgs {
     /**
      * Attribute name to filter with.
@@ -169,14 +180,13 @@ export interface GetInstanceIpv4FilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetInstanceIpv4Filter {
-    /**
-     * Attribute name to filter with.
-     */
+export interface GetInstancesFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetInstancesFilter {
     name: string;
-    /**
-     * One or more values to filter with.
-     */
     values: string[];
 }
 
@@ -202,17 +212,6 @@ export interface GetIsoPrivateFilter {
     values: string[];
 }
 
-export interface GetIsoPublicFilterArgs {
-    /**
-     * Attribute name to filter with.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * One or more values filter with.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetIsoPublicFilter {
     /**
      * Attribute name to filter with.
@@ -224,15 +223,15 @@ export interface GetIsoPublicFilter {
     values: string[];
 }
 
-export interface GetKubernetesFilter {
+export interface GetIsoPublicFilterArgs {
     /**
      * Attribute name to filter with.
      */
-    name: string;
+    name: pulumi.Input<string>;
     /**
      * One or more values filter with.
      */
-    values: string[];
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetKubernetesFilterArgs {
@@ -246,7 +245,7 @@ export interface GetKubernetesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetLoadBalancerFilter {
+export interface GetKubernetesFilter {
     /**
      * Attribute name to filter with.
      */
@@ -266,6 +265,17 @@ export interface GetLoadBalancerFilterArgs {
      * One or more values filter with.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetLoadBalancerFilter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values filter with.
+     */
+    values: string[];
 }
 
 export interface GetObjectStorageClusterFilterArgs {
@@ -400,17 +410,6 @@ export interface GetRegionFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetReservedIpFilter {
-    /**
-     * Attribute name to filter with.
-     */
-    name: string;
-    /**
-     * One or more values filter with.
-     */
-    values: string[];
-}
-
 export interface GetReservedIpFilterArgs {
     /**
      * Attribute name to filter with.
@@ -420,6 +419,17 @@ export interface GetReservedIpFilterArgs {
      * One or more values filter with.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetReservedIpFilter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values filter with.
+     */
+    values: string[];
 }
 
 export interface GetReverseIpv4Filter {
@@ -466,17 +476,6 @@ export interface GetReverseIpv6FilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSnapshotFilter {
-    /**
-     * Attribute name to filter with.
-     */
-    name: string;
-    /**
-     * One or more values filter with.
-     */
-    values: string[];
-}
-
 export interface GetSnapshotFilterArgs {
     /**
      * Attribute name to filter with.
@@ -486,6 +485,17 @@ export interface GetSnapshotFilterArgs {
      * One or more values filter with.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetSnapshotFilter {
+    /**
+     * Attribute name to filter with.
+     */
+    name: string;
+    /**
+     * One or more values filter with.
+     */
+    values: string[];
 }
 
 export interface GetSshKeyFilterArgs {

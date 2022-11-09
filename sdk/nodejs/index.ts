@@ -21,6 +21,7 @@ export * from "./getDnsDomain";
 export * from "./getFirewallGroup";
 export * from "./getInstance";
 export * from "./getInstanceIpv4";
+export * from "./getInstances";
 export * from "./getIsoPrivate";
 export * from "./getIsoPublic";
 export * from "./getKubernetes";

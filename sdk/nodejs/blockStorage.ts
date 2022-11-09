@@ -62,7 +62,7 @@ export class BlockStorage extends pulumi.CustomResource {
      */
     public readonly attachedToInstance!: pulumi.Output<string | undefined>;
     /**
-     * Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+     * Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
      */
     public readonly blockType!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface BlockStorageState {
      */
     attachedToInstance?: pulumi.Input<string>;
     /**
-     * Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+     * Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
      */
     blockType?: pulumi.Input<string>;
     /**
@@ -200,7 +200,7 @@ export interface BlockStorageArgs {
      */
     attachedToInstance?: pulumi.Input<string>;
     /**
-     * Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPer` or `storageOpt`.
+     * Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `highPerf` or `storageOpt`.
      */
     blockType?: pulumi.Input<string>;
     /**

@@ -26,6 +26,8 @@ __all__ = [
     'GetFirewallGroupFilterResult',
     'GetInstanceFilterResult',
     'GetInstanceIpv4FilterResult',
+    'GetInstancesFilterResult',
+    'GetInstancesInstanceResult',
     'GetIsoPrivateFilterResult',
     'GetIsoPublicFilterResult',
     'GetKubernetesFilterResult',
@@ -898,6 +900,261 @@ class GetInstanceIpv4FilterResult(dict):
         One or more values to filter with.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetInstancesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 allowed_bandwidth: int,
+                 app_id: int,
+                 backups: str,
+                 backups_schedule: Mapping[str, Any],
+                 date_created: str,
+                 disk: int,
+                 features: Sequence[str],
+                 firewall_group_id: str,
+                 gateway_v4: str,
+                 hostname: str,
+                 image_id: str,
+                 internal_ip: str,
+                 kvm: str,
+                 label: str,
+                 location: str,
+                 main_ip: str,
+                 netmask_v4: str,
+                 os: str,
+                 os_id: int,
+                 plan: str,
+                 power_status: str,
+                 private_network_ids: Sequence[str],
+                 ram: int,
+                 region: str,
+                 server_status: str,
+                 status: str,
+                 tag: str,
+                 tags: Sequence[str],
+                 v6_main_ip: str,
+                 v6_network: str,
+                 v6_network_size: int,
+                 vcpu_count: int,
+                 vpc_ids: Sequence[str]):
+        pulumi.set(__self__, "allowed_bandwidth", allowed_bandwidth)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "backups_schedule", backups_schedule)
+        pulumi.set(__self__, "date_created", date_created)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "features", features)
+        pulumi.set(__self__, "firewall_group_id", firewall_group_id)
+        pulumi.set(__self__, "gateway_v4", gateway_v4)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "kvm", kvm)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "main_ip", main_ip)
+        pulumi.set(__self__, "netmask_v4", netmask_v4)
+        pulumi.set(__self__, "os", os)
+        pulumi.set(__self__, "os_id", os_id)
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "power_status", power_status)
+        pulumi.set(__self__, "private_network_ids", private_network_ids)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "server_status", server_status)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "v6_main_ip", v6_main_ip)
+        pulumi.set(__self__, "v6_network", v6_network)
+        pulumi.set(__self__, "v6_network_size", v6_network_size)
+        pulumi.set(__self__, "vcpu_count", vcpu_count)
+        pulumi.set(__self__, "vpc_ids", vpc_ids)
+
+    @property
+    @pulumi.getter(name="allowedBandwidth")
+    def allowed_bandwidth(self) -> int:
+        return pulumi.get(self, "allowed_bandwidth")
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> int:
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter
+    def backups(self) -> str:
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter(name="backupsSchedule")
+    def backups_schedule(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "backups_schedule")
+
+    @property
+    @pulumi.getter(name="dateCreated")
+    def date_created(self) -> str:
+        return pulumi.get(self, "date_created")
+
+    @property
+    @pulumi.getter
+    def disk(self) -> int:
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def features(self) -> Sequence[str]:
+        return pulumi.get(self, "features")
+
+    @property
+    @pulumi.getter(name="firewallGroupId")
+    def firewall_group_id(self) -> str:
+        return pulumi.get(self, "firewall_group_id")
+
+    @property
+    @pulumi.getter(name="gatewayV4")
+    def gateway_v4(self) -> str:
+        return pulumi.get(self, "gateway_v4")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def kvm(self) -> str:
+        return pulumi.get(self, "kvm")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="mainIp")
+    def main_ip(self) -> str:
+        return pulumi.get(self, "main_ip")
+
+    @property
+    @pulumi.getter(name="netmaskV4")
+    def netmask_v4(self) -> str:
+        return pulumi.get(self, "netmask_v4")
+
+    @property
+    @pulumi.getter
+    def os(self) -> str:
+        return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter(name="osId")
+    def os_id(self) -> int:
+        return pulumi.get(self, "os_id")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> str:
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter(name="powerStatus")
+    def power_status(self) -> str:
+        return pulumi.get(self, "power_status")
+
+    @property
+    @pulumi.getter(name="privateNetworkIds")
+    def private_network_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "private_network_ids")
+
+    @property
+    @pulumi.getter
+    def ram(self) -> int:
+        return pulumi.get(self, "ram")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="serverStatus")
+    def server_status(self) -> str:
+        return pulumi.get(self, "server_status")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="v6MainIp")
+    def v6_main_ip(self) -> str:
+        return pulumi.get(self, "v6_main_ip")
+
+    @property
+    @pulumi.getter(name="v6Network")
+    def v6_network(self) -> str:
+        return pulumi.get(self, "v6_network")
+
+    @property
+    @pulumi.getter(name="v6NetworkSize")
+    def v6_network_size(self) -> int:
+        return pulumi.get(self, "v6_network_size")
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> int:
+        return pulumi.get(self, "vcpu_count")
+
+    @property
+    @pulumi.getter(name="vpcIds")
+    def vpc_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "vpc_ids")
 
 
 @pulumi.output_type

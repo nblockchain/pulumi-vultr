@@ -2202,6 +2202,392 @@ func (o GetInstanceIpv4FilterArrayOutput) Index(i pulumi.IntInput) GetInstanceIp
 	}).(GetInstanceIpv4FilterOutput)
 }
 
+type GetInstancesFilter struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+// GetInstancesFilterInput is an input type that accepts GetInstancesFilterArgs and GetInstancesFilterOutput values.
+// You can construct a concrete instance of `GetInstancesFilterInput` via:
+//
+//          GetInstancesFilterArgs{...}
+type GetInstancesFilterInput interface {
+	pulumi.Input
+
+	ToGetInstancesFilterOutput() GetInstancesFilterOutput
+	ToGetInstancesFilterOutputWithContext(context.Context) GetInstancesFilterOutput
+}
+
+type GetInstancesFilterArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstancesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesFilter)(nil)).Elem()
+}
+
+func (i GetInstancesFilterArgs) ToGetInstancesFilterOutput() GetInstancesFilterOutput {
+	return i.ToGetInstancesFilterOutputWithContext(context.Background())
+}
+
+func (i GetInstancesFilterArgs) ToGetInstancesFilterOutputWithContext(ctx context.Context) GetInstancesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesFilterOutput)
+}
+
+// GetInstancesFilterArrayInput is an input type that accepts GetInstancesFilterArray and GetInstancesFilterArrayOutput values.
+// You can construct a concrete instance of `GetInstancesFilterArrayInput` via:
+//
+//          GetInstancesFilterArray{ GetInstancesFilterArgs{...} }
+type GetInstancesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesFilterArrayOutput() GetInstancesFilterArrayOutput
+	ToGetInstancesFilterArrayOutputWithContext(context.Context) GetInstancesFilterArrayOutput
+}
+
+type GetInstancesFilterArray []GetInstancesFilterInput
+
+func (GetInstancesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesFilter)(nil)).Elem()
+}
+
+func (i GetInstancesFilterArray) ToGetInstancesFilterArrayOutput() GetInstancesFilterArrayOutput {
+	return i.ToGetInstancesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesFilterArray) ToGetInstancesFilterArrayOutputWithContext(ctx context.Context) GetInstancesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesFilterArrayOutput)
+}
+
+type GetInstancesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesFilter)(nil)).Elem()
+}
+
+func (o GetInstancesFilterOutput) ToGetInstancesFilterOutput() GetInstancesFilterOutput {
+	return o
+}
+
+func (o GetInstancesFilterOutput) ToGetInstancesFilterOutputWithContext(ctx context.Context) GetInstancesFilterOutput {
+	return o
+}
+
+func (o GetInstancesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstancesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesFilter)(nil)).Elem()
+}
+
+func (o GetInstancesFilterArrayOutput) ToGetInstancesFilterArrayOutput() GetInstancesFilterArrayOutput {
+	return o
+}
+
+func (o GetInstancesFilterArrayOutput) ToGetInstancesFilterArrayOutputWithContext(ctx context.Context) GetInstancesFilterArrayOutput {
+	return o
+}
+
+func (o GetInstancesFilterArrayOutput) Index(i pulumi.IntInput) GetInstancesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesFilter {
+		return vs[0].([]GetInstancesFilter)[vs[1].(int)]
+	}).(GetInstancesFilterOutput)
+}
+
+type GetInstancesInstance struct {
+	AllowedBandwidth  int                    `pulumi:"allowedBandwidth"`
+	AppId             int                    `pulumi:"appId"`
+	Backups           string                 `pulumi:"backups"`
+	BackupsSchedule   map[string]interface{} `pulumi:"backupsSchedule"`
+	DateCreated       string                 `pulumi:"dateCreated"`
+	Disk              int                    `pulumi:"disk"`
+	Features          []string               `pulumi:"features"`
+	FirewallGroupId   string                 `pulumi:"firewallGroupId"`
+	GatewayV4         string                 `pulumi:"gatewayV4"`
+	Hostname          string                 `pulumi:"hostname"`
+	ImageId           string                 `pulumi:"imageId"`
+	InternalIp        string                 `pulumi:"internalIp"`
+	Kvm               string                 `pulumi:"kvm"`
+	Label             string                 `pulumi:"label"`
+	Location          string                 `pulumi:"location"`
+	MainIp            string                 `pulumi:"mainIp"`
+	NetmaskV4         string                 `pulumi:"netmaskV4"`
+	Os                string                 `pulumi:"os"`
+	OsId              int                    `pulumi:"osId"`
+	Plan              string                 `pulumi:"plan"`
+	PowerStatus       string                 `pulumi:"powerStatus"`
+	PrivateNetworkIds []string               `pulumi:"privateNetworkIds"`
+	Ram               int                    `pulumi:"ram"`
+	Region            string                 `pulumi:"region"`
+	ServerStatus      string                 `pulumi:"serverStatus"`
+	Status            string                 `pulumi:"status"`
+	Tag               string                 `pulumi:"tag"`
+	Tags              []string               `pulumi:"tags"`
+	V6MainIp          string                 `pulumi:"v6MainIp"`
+	V6Network         string                 `pulumi:"v6Network"`
+	V6NetworkSize     int                    `pulumi:"v6NetworkSize"`
+	VcpuCount         int                    `pulumi:"vcpuCount"`
+	VpcIds            []string               `pulumi:"vpcIds"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//          GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	AllowedBandwidth  pulumi.IntInput         `pulumi:"allowedBandwidth"`
+	AppId             pulumi.IntInput         `pulumi:"appId"`
+	Backups           pulumi.StringInput      `pulumi:"backups"`
+	BackupsSchedule   pulumi.MapInput         `pulumi:"backupsSchedule"`
+	DateCreated       pulumi.StringInput      `pulumi:"dateCreated"`
+	Disk              pulumi.IntInput         `pulumi:"disk"`
+	Features          pulumi.StringArrayInput `pulumi:"features"`
+	FirewallGroupId   pulumi.StringInput      `pulumi:"firewallGroupId"`
+	GatewayV4         pulumi.StringInput      `pulumi:"gatewayV4"`
+	Hostname          pulumi.StringInput      `pulumi:"hostname"`
+	ImageId           pulumi.StringInput      `pulumi:"imageId"`
+	InternalIp        pulumi.StringInput      `pulumi:"internalIp"`
+	Kvm               pulumi.StringInput      `pulumi:"kvm"`
+	Label             pulumi.StringInput      `pulumi:"label"`
+	Location          pulumi.StringInput      `pulumi:"location"`
+	MainIp            pulumi.StringInput      `pulumi:"mainIp"`
+	NetmaskV4         pulumi.StringInput      `pulumi:"netmaskV4"`
+	Os                pulumi.StringInput      `pulumi:"os"`
+	OsId              pulumi.IntInput         `pulumi:"osId"`
+	Plan              pulumi.StringInput      `pulumi:"plan"`
+	PowerStatus       pulumi.StringInput      `pulumi:"powerStatus"`
+	PrivateNetworkIds pulumi.StringArrayInput `pulumi:"privateNetworkIds"`
+	Ram               pulumi.IntInput         `pulumi:"ram"`
+	Region            pulumi.StringInput      `pulumi:"region"`
+	ServerStatus      pulumi.StringInput      `pulumi:"serverStatus"`
+	Status            pulumi.StringInput      `pulumi:"status"`
+	Tag               pulumi.StringInput      `pulumi:"tag"`
+	Tags              pulumi.StringArrayInput `pulumi:"tags"`
+	V6MainIp          pulumi.StringInput      `pulumi:"v6MainIp"`
+	V6Network         pulumi.StringInput      `pulumi:"v6Network"`
+	V6NetworkSize     pulumi.IntInput         `pulumi:"v6NetworkSize"`
+	VcpuCount         pulumi.IntInput         `pulumi:"vcpuCount"`
+	VpcIds            pulumi.StringArrayInput `pulumi:"vpcIds"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) AllowedBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.AllowedBandwidth }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) AppId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.AppId }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) Backups() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Backups }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) BackupsSchedule() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.BackupsSchedule }).(pulumi.MapOutput)
+}
+
+func (o GetInstancesInstanceOutput) DateCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DateCreated }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Features }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesInstanceOutput) FirewallGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.FirewallGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) GatewayV4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.GatewayV4 }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Kvm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Kvm }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) MainIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MainIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) NetmaskV4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetmaskV4 }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Os() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Os }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) OsId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.OsId }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Plan }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) PowerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PowerStatus }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) PrivateNetworkIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.PrivateNetworkIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesInstanceOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) ServerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ServerStatus }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesInstanceOutput) V6MainIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.V6MainIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) V6Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.V6Network }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) V6NetworkSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.V6NetworkSize }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) VcpuCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.VcpuCount }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) VpcIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.VpcIds }).(pulumi.StringArrayOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetIsoPrivateFilter struct {
 	// Attribute name to filter with.
 	Name string `pulumi:"name"`
@@ -4461,6 +4847,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFilterArrayInput)(nil)).Elem(), GetInstanceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceIpv4FilterInput)(nil)).Elem(), GetInstanceIpv4FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceIpv4FilterArrayInput)(nil)).Elem(), GetInstanceIpv4FilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesFilterInput)(nil)).Elem(), GetInstancesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesFilterArrayInput)(nil)).Elem(), GetInstancesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIsoPrivateFilterInput)(nil)).Elem(), GetIsoPrivateFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIsoPrivateFilterArrayInput)(nil)).Elem(), GetIsoPrivateFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIsoPublicFilterInput)(nil)).Elem(), GetIsoPublicFilterArgs{})
@@ -4531,6 +4921,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceIpv4FilterOutput{})
 	pulumi.RegisterOutputType(GetInstanceIpv4FilterArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesFilterOutput{})
+	pulumi.RegisterOutputType(GetInstancesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetIsoPrivateFilterOutput{})
 	pulumi.RegisterOutputType(GetIsoPrivateFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetIsoPublicFilterOutput{})

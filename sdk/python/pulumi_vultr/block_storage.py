@@ -25,7 +25,7 @@ class BlockStorageArgs:
         :param pulumi.Input[str] region: Region in which this block storage will reside in. (Currently only NJ/NY supported region "ewr")
         :param pulumi.Input[int] size_gb: The size of the given block storage.
         :param pulumi.Input[str] attached_to_instance: VPS ID that you want to have this block storage attached to.
-        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         :param pulumi.Input[str] label: Label that is given to your block storage.
         :param pulumi.Input[bool] live: Boolean value that will allow attachment of the volume to an instance without a restart. Default is false.
         """
@@ -80,7 +80,7 @@ class BlockStorageArgs:
     @pulumi.getter(name="blockType")
     def block_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         """
         return pulumi.get(self, "block_type")
 
@@ -129,7 +129,7 @@ class _BlockStorageState:
         """
         Input properties used for looking up and filtering BlockStorage resources.
         :param pulumi.Input[str] attached_to_instance: VPS ID that you want to have this block storage attached to.
-        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         :param pulumi.Input[float] cost: The monthly cost of this block storage.
         :param pulumi.Input[str] date_created: The date this block storage was created.
         :param pulumi.Input[str] label: Label that is given to your block storage.
@@ -176,7 +176,7 @@ class _BlockStorageState:
     @pulumi.getter(name="blockType")
     def block_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         """
         return pulumi.get(self, "block_type")
 
@@ -320,7 +320,7 @@ class BlockStorage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attached_to_instance: VPS ID that you want to have this block storage attached to.
-        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         :param pulumi.Input[str] label: Label that is given to your block storage.
         :param pulumi.Input[bool] live: Boolean value that will allow attachment of the volume to an instance without a restart. Default is false.
         :param pulumi.Input[str] region: Region in which this block storage will reside in. (Currently only NJ/NY supported region "ewr")
@@ -428,7 +428,7 @@ class BlockStorage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attached_to_instance: VPS ID that you want to have this block storage attached to.
-        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        :param pulumi.Input[str] block_type: Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         :param pulumi.Input[float] cost: The monthly cost of this block storage.
         :param pulumi.Input[str] date_created: The date this block storage was created.
         :param pulumi.Input[str] label: Label that is given to your block storage.
@@ -466,7 +466,7 @@ class BlockStorage(pulumi.CustomResource):
     @pulumi.getter(name="blockType")
     def block_type(self) -> pulumi.Output[str]:
         """
-        Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         """
         return pulumi.get(self, "block_type")
 

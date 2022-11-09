@@ -8,7 +8,7 @@
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`vultr` Terraform Provider](https://github.com/vultr/terraform-provider-vultr).",
+    "attribution": "This Pulumi package is based on the [`vultr` Terraform Provider](https://github.com/nblockchain/terraform-provider-vultr).",
     "repository": "https://github.com/aarani/pulumi-vultr",
     "publisher": "Pulumi",
     "meta": {
@@ -39,12 +39,12 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing vultr cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/vultr/terraform-provider-vultr)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-vultr` repo](https://github.com/aarani/pulumi-vultr/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-vultr` repo](https://github.com/vultr/terraform-provider-vultr/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/nblockchain/terraform-provider-vultr)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-vultr` repo](https://github.com/aarani/pulumi-vultr/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-vultr` repo](https://github.com/nblockchain/terraform-provider-vultr/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/vultr/terraform-provider-vultr)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-vultr` repo](https://github.com/aarani/pulumi-vultr/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-vultr` repo](https://github.com/vultr/terraform-provider-vultr/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/nblockchain/terraform-provider-vultr)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-vultr` repo](https://github.com/aarani/pulumi-vultr/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-vultr` repo](https://github.com/nblockchain/terraform-provider-vultr/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
@@ -784,6 +784,358 @@
                 "name",
                 "values"
             ]
+        },
+        "vultr:index/getInstancesFilter:getInstancesFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "vultr:index/getInstancesInstance:getInstancesInstance": {
+            "properties": {
+                "allowedBandwidth": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "appId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "backups": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "backupsSchedule": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disk": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firewallGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatewayV4": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "internalIp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kvm": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "location": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mainIp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "netmaskV4": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "os": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "osId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "plan": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "powerStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateNetworkIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ram": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "v6MainIp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "v6Network": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "v6NetworkSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vcpuCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vpcIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedBandwidth",
+                "appId",
+                "backups",
+                "backupsSchedule",
+                "dateCreated",
+                "disk",
+                "features",
+                "firewallGroupId",
+                "gatewayV4",
+                "hostname",
+                "imageId",
+                "internalIp",
+                "kvm",
+                "label",
+                "location",
+                "mainIp",
+                "netmaskV4",
+                "os",
+                "osId",
+                "plan",
+                "powerStatus",
+                "privateNetworkIds",
+                "ram",
+                "region",
+                "serverStatus",
+                "status",
+                "tag",
+                "tags",
+                "v6MainIp",
+                "v6Network",
+                "v6NetworkSize",
+                "vcpuCount",
+                "vpcIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "vultr:index/getIsoPrivateFilter:getIsoPrivateFilter": {
             "properties": {
@@ -1629,7 +1981,7 @@
                 },
                 "reservedIpv4": {
                     "type": "string",
-                    "description": "IP address of the floating IP to use as the main IP of this server.\n"
+                    "description": "The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)\n"
                 },
                 "scriptId": {
                     "type": "string",
@@ -1746,7 +2098,7 @@
                 },
                 "reservedIpv4": {
                     "type": "string",
-                    "description": "IP address of the floating IP to use as the main IP of this server.\n"
+                    "description": "The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)\n"
                 },
                 "scriptId": {
                     "type": "string",
@@ -1874,7 +2226,7 @@
                     },
                     "reservedIpv4": {
                         "type": "string",
-                        "description": "IP address of the floating IP to use as the main IP of this server.\n"
+                        "description": "The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)\n"
                     },
                     "scriptId": {
                         "type": "string",
@@ -1940,7 +2292,7 @@
                 },
                 "blockType": {
                     "type": "string",
-                    "description": "Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.\n"
+                    "description": "Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.\n"
                 },
                 "cost": {
                     "type": "number",
@@ -1991,7 +2343,7 @@
                 },
                 "blockType": {
                     "type": "string",
-                    "description": "Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.\n",
+                    "description": "Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.\n",
                     "willReplaceOnChanges": true
                 },
                 "label": {
@@ -2025,7 +2377,7 @@
                     },
                     "blockType": {
                         "type": "string",
-                        "description": "Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.\n",
+                        "description": "Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.\n",
                         "willReplaceOnChanges": true
                     },
                     "cost": {
@@ -2993,7 +3345,7 @@
             }
         },
         "vultr:index/instanceIPv4:InstanceIPv4": {
-            "description": "Provides a Vultr instance IPv4 resource. This can be used to create, read, and\nmodify a IPv4 address. instance is rebooted by default.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a new IPv4 address for a instance:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vultr from \"@pulumi/vultr\";\n\nconst myInstance = new vultr.Instance(\"my_instance\", {\n    enableIpv6: true,\n    osId: 167,\n    plan: \"vc2-1c-1gb\",\n    region: \"ewr\",\n});\nconst myInstanceIpv4 = new vultr.InstanceIPv4(\"my_instance_ipv4\", {\n    instanceId: myInstance.id,\n    reboot: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_vultr as vultr\n\nmy_instance = vultr.Instance(\"myInstance\",\n    enable_ipv6=True,\n    os_id=167,\n    plan=\"vc2-1c-1gb\",\n    region=\"ewr\")\nmy_instance_ipv4 = vultr.InstanceIPv4(\"myInstanceIpv4\",\n    instance_id=my_instance.id,\n    reboot=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Vultr = Pulumi.Vultr;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myInstance = new Vultr.Instance(\"myInstance\", new()\n    {\n        EnableIpv6 = true,\n        OsId = 167,\n        Plan = \"vc2-1c-1gb\",\n        Region = \"ewr\",\n    });\n\n    var myInstanceIpv4 = new Vultr.InstanceIPv4(\"myInstanceIpv4\", new()\n    {\n        InstanceId = myInstance.Id,\n        Reboot = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vultr/sdk/go/vultr\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyInstance, err := vultr.NewInstance(ctx, \"myInstance\", \u0026vultr.InstanceArgs{\n\t\t\tEnableIpv6: pulumi.Bool(true),\n\t\t\tOsId:       pulumi.Int(167),\n\t\t\tPlan:       pulumi.String(\"vc2-1c-1gb\"),\n\t\t\tRegion:     pulumi.String(\"ewr\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vultr.NewInstanceIPv4(ctx, \"myInstanceIpv4\", \u0026vultr.InstanceIPv4Args{\n\t\t\tInstanceId: myInstance.ID(),\n\t\t\tReboot:     pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vultr.Instance;\nimport com.pulumi.vultr.InstanceArgs;\nimport com.pulumi.vultr.InstanceIPv4;\nimport com.pulumi.vultr.InstanceIPv4Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myInstance = new Instance(\"myInstance\", InstanceArgs.builder()        \n            .enableIpv6(true)\n            .osId(167)\n            .plan(\"vc2-1c-1gb\")\n            .region(\"ewr\")\n            .build());\n\n        var myInstanceIpv4 = new InstanceIPv4(\"myInstanceIpv4\", InstanceIPv4Args.builder()        \n            .instanceId(myInstance.id())\n            .reboot(\"false\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myInstance:\n    type: vultr:Instance\n    properties:\n      enableIpv6: true\n      osId: 167\n      plan: vc2-1c-1gb\n      region: ewr\n  myInstanceIpv4:\n    type: vultr:InstanceIPv4\n    properties:\n      instanceId: ${myInstance.id}\n      reboot: false\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Vultr instance IPv4 resource. This can be used to create, read, and\nmodify a IPv4 address. instance is rebooted by default.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a new IPv4 address for a instance:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vultr from \"@pulumi/vultr\";\n\nconst myInstance = new vultr.Instance(\"my_instance\", {\n    enableIpv6: true,\n    osId: 167,\n    plan: \"vc2-1c-1gb\",\n    region: \"ewr\",\n});\nconst myInstanceIpv4 = new vultr.InstanceIPv4(\"my_instance_ipv4\", {\n    instanceId: myInstance.id,\n    reboot: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_vultr as vultr\n\nmy_instance = vultr.Instance(\"myInstance\",\n    enable_ipv6=True,\n    os_id=167,\n    plan=\"vc2-1c-1gb\",\n    region=\"ewr\")\nmy_instance_ipv4 = vultr.InstanceIPv4(\"myInstanceIpv4\",\n    instance_id=my_instance.id,\n    reboot=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Vultr = Pulumi.Vultr;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myInstance = new Vultr.Instance(\"myInstance\", new()\n    {\n        EnableIpv6 = true,\n        OsId = 167,\n        Plan = \"vc2-1c-1gb\",\n        Region = \"ewr\",\n    });\n\n    var myInstanceIpv4 = new Vultr.InstanceIPv4(\"myInstanceIpv4\", new()\n    {\n        InstanceId = myInstance.Id,\n        Reboot = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vultr/sdk/go/vultr\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyInstance, err := vultr.NewInstance(ctx, \"myInstance\", \u0026vultr.InstanceArgs{\n\t\t\tEnableIpv6: pulumi.Bool(true),\n\t\t\tOsId:       pulumi.Int(167),\n\t\t\tPlan:       pulumi.String(\"vc2-1c-1gb\"),\n\t\t\tRegion:     pulumi.String(\"ewr\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vultr.NewInstanceIPv4(ctx, \"myInstanceIpv4\", \u0026vultr.InstanceIPv4Args{\n\t\t\tInstanceId: myInstance.ID(),\n\t\t\tReboot:     pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vultr.Instance;\nimport com.pulumi.vultr.InstanceArgs;\nimport com.pulumi.vultr.InstanceIPv4;\nimport com.pulumi.vultr.InstanceIPv4Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myInstance = new Instance(\"myInstance\", InstanceArgs.builder()        \n            .enableIpv6(true)\n            .osId(167)\n            .plan(\"vc2-1c-1gb\")\n            .region(\"ewr\")\n            .build());\n\n        var myInstanceIpv4 = new InstanceIPv4(\"myInstanceIpv4\", InstanceIPv4Args.builder()        \n            .instanceId(myInstance.id())\n            .reboot(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myInstance:\n    type: vultr:Instance\n    properties:\n      enableIpv6: true\n      osId: 167\n      plan: vc2-1c-1gb\n      region: ewr\n  myInstanceIpv4:\n    type: vultr:InstanceIPv4\n    properties:\n      instanceId: ${myInstance.id}\n      reboot: false\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "gateway": {
                     "type": "string",
@@ -5331,6 +5683,47 @@
                     "ip",
                     "netmask",
                     "reverse",
+                    "id"
+                ]
+            }
+        },
+        "vultr:index/getInstances:getInstances": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getInstances.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vultr:index/getInstancesFilter:getInstancesFilter"
+                        },
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInstances.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vultr:index/getInstancesFilter:getInstancesFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "instances": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vultr:index/getInstancesInstance:getInstancesInstance"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instances",
                     "id"
                 ]
             }

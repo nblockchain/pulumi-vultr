@@ -41,7 +41,7 @@ class BareMetalServerArgs:
         :param pulumi.Input[str] image_id: The ID of the Vultr marketplace application to be installed on the server. [See List Applications](https://www.vultr.com/api/#operation/list-applications) Note marketplace applications are denoted by type: `marketplace` and you must use the `image_id` not the id.
         :param pulumi.Input[str] label: A label for the server.
         :param pulumi.Input[int] os_id: The ID of the operating system to be installed on the server. [See List OS](https://www.vultr.com/api/#operation/list-os)
-        :param pulumi.Input[str] reserved_ipv4: IP address of the floating IP to use as the main IP of this server.
+        :param pulumi.Input[str] reserved_ipv4: The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         :param pulumi.Input[str] script_id: The ID of the startup script you want added to the server.
         :param pulumi.Input[str] snapshot_id: The ID of the Vultr snapshot that the server will restore for the initial installation. [See List Snapshots](https://www.vultr.com/api/#operation/list-snapshots)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: A list of SSH key IDs to apply to the server on install (only valid for Linux/FreeBSD).
@@ -195,7 +195,7 @@ class BareMetalServerArgs:
     @pulumi.getter(name="reservedIpv4")
     def reserved_ipv4(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address of the floating IP to use as the main IP of this server.
+        The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         """
         return pulumi.get(self, "reserved_ipv4")
 
@@ -330,7 +330,7 @@ class _BareMetalServerState:
         :param pulumi.Input[str] plan: The ID of the plan that you want the server to subscribe to. [See List Plans](https://www.vultr.com/api/#tag/plans)
         :param pulumi.Input[str] ram: The amount of memory available on the server in MB.
         :param pulumi.Input[str] region: The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
-        :param pulumi.Input[str] reserved_ipv4: IP address of the floating IP to use as the main IP of this server.
+        :param pulumi.Input[str] reserved_ipv4: The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         :param pulumi.Input[str] script_id: The ID of the startup script you want added to the server.
         :param pulumi.Input[str] snapshot_id: The ID of the Vultr snapshot that the server will restore for the initial installation. [See List Snapshots](https://www.vultr.com/api/#operation/list-snapshots)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: A list of SSH key IDs to apply to the server on install (only valid for Linux/FreeBSD).
@@ -638,7 +638,7 @@ class _BareMetalServerState:
     @pulumi.getter(name="reservedIpv4")
     def reserved_ipv4(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address of the floating IP to use as the main IP of this server.
+        The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         """
         return pulumi.get(self, "reserved_ipv4")
 
@@ -843,7 +843,7 @@ class BareMetalServer(pulumi.CustomResource):
         :param pulumi.Input[int] os_id: The ID of the operating system to be installed on the server. [See List OS](https://www.vultr.com/api/#operation/list-os)
         :param pulumi.Input[str] plan: The ID of the plan that you want the server to subscribe to. [See List Plans](https://www.vultr.com/api/#tag/plans)
         :param pulumi.Input[str] region: The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
-        :param pulumi.Input[str] reserved_ipv4: IP address of the floating IP to use as the main IP of this server.
+        :param pulumi.Input[str] reserved_ipv4: The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         :param pulumi.Input[str] script_id: The ID of the startup script you want added to the server.
         :param pulumi.Input[str] snapshot_id: The ID of the Vultr snapshot that the server will restore for the initial installation. [See List Snapshots](https://www.vultr.com/api/#operation/list-snapshots)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: A list of SSH key IDs to apply to the server on install (only valid for Linux/FreeBSD).
@@ -1043,7 +1043,7 @@ class BareMetalServer(pulumi.CustomResource):
         :param pulumi.Input[str] plan: The ID of the plan that you want the server to subscribe to. [See List Plans](https://www.vultr.com/api/#tag/plans)
         :param pulumi.Input[str] ram: The amount of memory available on the server in MB.
         :param pulumi.Input[str] region: The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
-        :param pulumi.Input[str] reserved_ipv4: IP address of the floating IP to use as the main IP of this server.
+        :param pulumi.Input[str] reserved_ipv4: The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         :param pulumi.Input[str] script_id: The ID of the startup script you want added to the server.
         :param pulumi.Input[str] snapshot_id: The ID of the Vultr snapshot that the server will restore for the initial installation. [See List Snapshots](https://www.vultr.com/api/#operation/list-snapshots)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: A list of SSH key IDs to apply to the server on install (only valid for Linux/FreeBSD).
@@ -1247,7 +1247,7 @@ class BareMetalServer(pulumi.CustomResource):
     @pulumi.getter(name="reservedIpv4")
     def reserved_ipv4(self) -> pulumi.Output[str]:
         """
-        IP address of the floating IP to use as the main IP of this server.
+        The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         """
         return pulumi.get(self, "reserved_ipv4")
 

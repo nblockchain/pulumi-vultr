@@ -92,6 +92,47 @@ export interface GetInstanceIpv4Filter {
     values: string[];
 }
 
+export interface GetInstancesFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetInstancesInstance {
+    allowedBandwidth: number;
+    appId: number;
+    backups: string;
+    backupsSchedule: {[key: string]: any};
+    dateCreated: string;
+    disk: number;
+    features: string[];
+    firewallGroupId: string;
+    gatewayV4: string;
+    hostname: string;
+    imageId: string;
+    internalIp: string;
+    kvm: string;
+    label: string;
+    location: string;
+    mainIp: string;
+    netmaskV4: string;
+    os: string;
+    osId: number;
+    plan: string;
+    powerStatus: string;
+    privateNetworkIds: string[];
+    ram: number;
+    region: string;
+    serverStatus: string;
+    status: string;
+    tag: string;
+    tags: string[];
+    v6MainIp: string;
+    v6Network: string;
+    v6NetworkSize: number;
+    vcpuCount: number;
+    vpcIds: string[];
+}
+
 export interface GetIsoPrivateFilter {
     /**
      * Attribute name to filter with.
@@ -533,4 +574,3 @@ export interface LoadBalancerSsl {
      */
     privateKey: string;
 }
-

@@ -25,6 +25,7 @@ __all__ = [
     'GetFirewallGroupFilterArgs',
     'GetInstanceFilterArgs',
     'GetInstanceIpv4FilterArgs',
+    'GetInstancesFilterArgs',
     'GetIsoPrivateFilterArgs',
     'GetIsoPublicFilterArgs',
     'GetKubernetesFilterArgs',
@@ -984,6 +985,33 @@ class GetInstanceIpv4FilterArgs:
         """
         One or more values to filter with.
         """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GetInstancesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
     @values.setter
