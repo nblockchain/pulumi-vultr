@@ -50,7 +50,7 @@ namespace Pulumi.Vultr
         public Output<string?> AttachedToInstance { get; private set; } = null!;
 
         /// <summary>
-        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         /// </summary>
         [Output("blockType")]
         public Output<string> BlockType { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Vultr
         public Input<string>? AttachedToInstance { get; set; }
 
         /// <summary>
-        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         /// </summary>
         [Input("blockType")]
         public Input<string>? BlockType { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Vultr
         public Input<string>? AttachedToInstance { get; set; }
 
         /// <summary>
-        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_per` or `storage_opt`.
+        /// Determines on the type of block storage volume that will be created. Soon to become a required parameter. Options are `high_perf` or `storage_opt`.
         /// </summary>
         [Input("blockType")]
         public Input<string>? BlockType { get; set; }

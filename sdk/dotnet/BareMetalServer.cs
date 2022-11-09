@@ -187,7 +187,7 @@ namespace Pulumi.Vultr
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// IP address of the floating IP to use as the main IP of this server.
+        /// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         /// </summary>
         [Output("reservedIpv4")]
         public Output<string> ReservedIpv4 { get; private set; } = null!;
@@ -353,7 +353,7 @@ namespace Pulumi.Vultr
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// IP address of the floating IP to use as the main IP of this server.
+        /// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         /// </summary>
         [Input("reservedIpv4")]
         public Input<string>? ReservedIpv4 { get; set; }
@@ -529,7 +529,7 @@ namespace Pulumi.Vultr
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// IP address of the floating IP to use as the main IP of this server.
+        /// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
         /// </summary>
         [Input("reservedIpv4")]
         public Input<string>? ReservedIpv4 { get; set; }

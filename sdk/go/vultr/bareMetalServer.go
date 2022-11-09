@@ -121,7 +121,7 @@ type BareMetalServer struct {
 	Ram pulumi.StringOutput `pulumi:"ram"`
 	// The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
 	Region pulumi.StringOutput `pulumi:"region"`
-	// IP address of the floating IP to use as the main IP of this server.
+	// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
 	ReservedIpv4 pulumi.StringOutput `pulumi:"reservedIpv4"`
 	// The ID of the startup script you want added to the server.
 	ScriptId pulumi.StringPtrOutput `pulumi:"scriptId"`
@@ -220,7 +220,7 @@ type bareMetalServerState struct {
 	Ram *string `pulumi:"ram"`
 	// The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
 	Region *string `pulumi:"region"`
-	// IP address of the floating IP to use as the main IP of this server.
+	// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
 	ReservedIpv4 *string `pulumi:"reservedIpv4"`
 	// The ID of the startup script you want added to the server.
 	ScriptId *string `pulumi:"scriptId"`
@@ -285,7 +285,7 @@ type BareMetalServerState struct {
 	Ram pulumi.StringPtrInput
 	// The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
 	Region pulumi.StringPtrInput
-	// IP address of the floating IP to use as the main IP of this server.
+	// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
 	ReservedIpv4 pulumi.StringPtrInput
 	// The ID of the startup script you want added to the server.
 	ScriptId pulumi.StringPtrInput
@@ -334,7 +334,7 @@ type bareMetalServerArgs struct {
 	Plan string `pulumi:"plan"`
 	// The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
 	Region string `pulumi:"region"`
-	// IP address of the floating IP to use as the main IP of this server.
+	// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
 	ReservedIpv4 *string `pulumi:"reservedIpv4"`
 	// The ID of the startup script you want added to the server.
 	ScriptId *string `pulumi:"scriptId"`
@@ -372,7 +372,7 @@ type BareMetalServerArgs struct {
 	Plan pulumi.StringInput
 	// The ID of the region that the server is to be created in. [See List Regions](https://www.vultr.com/api/#operation/list-regions)
 	Region pulumi.StringInput
-	// IP address of the floating IP to use as the main IP of this server.
+	// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
 	ReservedIpv4 pulumi.StringPtrInput
 	// The ID of the startup script you want added to the server.
 	ScriptId pulumi.StringPtrInput
@@ -572,7 +572,7 @@ func (o BareMetalServerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalServer) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// IP address of the floating IP to use as the main IP of this server.
+// The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
 func (o BareMetalServerOutput) ReservedIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalServer) pulumi.StringOutput { return v.ReservedIpv4 }).(pulumi.StringOutput)
 }

@@ -154,7 +154,7 @@ export class BareMetalServer extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * IP address of the floating IP to use as the main IP of this server.
+     * The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
      */
     public readonly reservedIpv4!: pulumi.Output<string>;
     /**
@@ -368,7 +368,7 @@ export interface BareMetalServerState {
      */
     region?: pulumi.Input<string>;
     /**
-     * IP address of the floating IP to use as the main IP of this server.
+     * The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
      */
     reservedIpv4?: pulumi.Input<string>;
     /**
@@ -456,7 +456,7 @@ export interface BareMetalServerArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * IP address of the floating IP to use as the main IP of this server.
+     * The ID of the floating IP to use as the main IP of this server. [See Reserved IPs](https://www.vultr.com/api/#operation/list-reserved-ips)
      */
     reservedIpv4?: pulumi.Input<string>;
     /**
