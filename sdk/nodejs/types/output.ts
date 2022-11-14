@@ -108,6 +108,7 @@ export interface GetInstancesInstance {
     firewallGroupId: string;
     gatewayV4: string;
     hostname: string;
+    id: string;
     imageId: string;
     internalIp: string;
     kvm: string;
