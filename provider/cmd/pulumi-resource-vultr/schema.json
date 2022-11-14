@@ -901,6 +901,14 @@
                         }
                     }
                 },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "imageId": {
                     "type": "string",
                     "language": {
@@ -1107,6 +1115,7 @@
                 "firewallGroupId",
                 "gatewayV4",
                 "hostname",
+                "id",
                 "imageId",
                 "internalIp",
                 "kvm",

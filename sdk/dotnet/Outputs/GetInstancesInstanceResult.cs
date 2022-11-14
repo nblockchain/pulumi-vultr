@@ -23,6 +23,7 @@ namespace Pulumi.Vultr.Outputs
         public readonly string FirewallGroupId;
         public readonly string GatewayV4;
         public readonly string Hostname;
+        public readonly string Id;
         public readonly string ImageId;
         public readonly string InternalIp;
         public readonly string Kvm;
@@ -68,6 +69,8 @@ namespace Pulumi.Vultr.Outputs
             string gatewayV4,
 
             string hostname,
+
+            string id,
 
             string imageId,
 
@@ -125,6 +128,7 @@ namespace Pulumi.Vultr.Outputs
             FirewallGroupId = firewallGroupId;
             GatewayV4 = gatewayV4;
             Hostname = hostname;
+            Id = id;
             ImageId = imageId;
             InternalIp = internalIp;
             Kvm = kvm;
