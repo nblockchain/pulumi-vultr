@@ -5,7 +5,7 @@ go 1.18
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
 
 require (
-	github.com/nblockchain/terraform-provider-vultr v0.0.0-20221114082653-5fafdb60e5ce
+	github.com/nblockchain/terraform-provider-vultr v0.0.0-20221121110153-488fc7e7562f
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.28.1
 	github.com/pulumi/pulumi/sdk/v3 v3.38.0
 )
