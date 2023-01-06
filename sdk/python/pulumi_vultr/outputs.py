@@ -934,6 +934,7 @@ class GetInstancesInstanceResult(dict):
                  firewall_group_id: str,
                  gateway_v4: str,
                  hostname: str,
+                 id: str,
                  image_id: str,
                  internal_ip: str,
                  kvm: str,
@@ -967,6 +968,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "firewall_group_id", firewall_group_id)
         pulumi.set(__self__, "gateway_v4", gateway_v4)
         pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "internal_ip", internal_ip)
         pulumi.set(__self__, "kvm", kvm)
@@ -1040,6 +1042,11 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def hostname(self) -> str:
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="imageId")

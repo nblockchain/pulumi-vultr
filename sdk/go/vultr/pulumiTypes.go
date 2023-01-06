@@ -2313,6 +2313,7 @@ type GetInstancesInstance struct {
 	FirewallGroupId   string                 `pulumi:"firewallGroupId"`
 	GatewayV4         string                 `pulumi:"gatewayV4"`
 	Hostname          string                 `pulumi:"hostname"`
+	Id                string                 `pulumi:"id"`
 	ImageId           string                 `pulumi:"imageId"`
 	InternalIp        string                 `pulumi:"internalIp"`
 	Kvm               string                 `pulumi:"kvm"`
@@ -2360,6 +2361,7 @@ type GetInstancesInstanceArgs struct {
 	FirewallGroupId   pulumi.StringInput      `pulumi:"firewallGroupId"`
 	GatewayV4         pulumi.StringInput      `pulumi:"gatewayV4"`
 	Hostname          pulumi.StringInput      `pulumi:"hostname"`
+	Id                pulumi.StringInput      `pulumi:"id"`
 	ImageId           pulumi.StringInput      `pulumi:"imageId"`
 	InternalIp        pulumi.StringInput      `pulumi:"internalIp"`
 	Kvm               pulumi.StringInput      `pulumi:"kvm"`
@@ -2474,6 +2476,10 @@ func (o GetInstancesInstanceOutput) GatewayV4() pulumi.StringOutput {
 
 func (o GetInstancesInstanceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) ImageId() pulumi.StringOutput {

@@ -720,8 +720,8 @@ github.com/morikuni/aec v1.0.0/go.mod h1:BbKIizmSmc5MMPqRYbxO4ZU0S0+P200+tUnFx7P
 github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223/go.mod h1:qRWi+5nqEBWmkhHvq77mSJWrCKwh8bxhgT7d/eI7P4U=
 github.com/natefinch/atomic v1.0.1 h1:ZPYKxkqQOx3KZ+RsbnP/YsgvxWQPGxjC0oBt2AhwV0A=
 github.com/natefinch/atomic v1.0.1/go.mod h1:N/D/ELrljoqDyT3rZrsUmtsuzvHkeB/wWjHV22AZRbM=
-github.com/nblockchain/terraform-provider-vultr v0.0.0-20221109123545-4310e10a3fdf h1:h3i3Mqa/bRZ7IsAqB6/+USz3OpwPRGLtHyEK/ELTSys=
-github.com/nblockchain/terraform-provider-vultr v0.0.0-20221109123545-4310e10a3fdf/go.mod h1:23Woi0cNTRZPFDx7knxTW+xMBN6GhPY+RxYZYKypsDg=
+github.com/nblockchain/terraform-provider-vultr v0.0.0-20221121110153-488fc7e7562f h1:yDo1KNsk3Lbt8x8yh6h/2W1Je1c/5vPgEgsMRO/RIDM=
+github.com/nblockchain/terraform-provider-vultr v0.0.0-20221121110153-488fc7e7562f/go.mod h1:23Woi0cNTRZPFDx7knxTW+xMBN6GhPY+RxYZYKypsDg=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
 github.com/nightlyone/lockfile v1.0.0 h1:RHep2cFKK4PonZJDdEl4GmkabuhbsRMgk/k3uAmxBiA=
 github.com/nsf/jsondiff v0.0.0-20200515183724-f29ed568f4ce h1:RPclfga2SEJmgMmz2k+Mg7cowZ8yv4Trqw9UsJby758=
